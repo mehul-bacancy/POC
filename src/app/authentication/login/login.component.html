@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form" #loginForm="ngForm" (ngSubmit)="_AuthenticationService.login(loginForm)">
+                <fieldset>
+                    <h2>Please Login</h2>
+                    <hr class="colorgraph">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" class="form-control input-lg"
+                        [(ngModel)]="model.email" #email="ngModel" email
+                        required>
+                    </div>
+                    <div *ngIf="email.invalid && !email.pristine">
+                        <div *ngIf="email.errors.required" class="alert alert-danger">
+                            Email is required    
+                        </div>
+                        <div *ngIf="email.errors.email" class="alert alert-danger">
+                            Enter email in valid form
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" class="form-control input-lg" 
+                        [(ngModel)]="model.password" #pwd="ngModel" minlength="6" maxlength="8"
+                        required>
+                    </div>
+                    <div *ngIf="pwd.invalid && !pwd.pristine">
+                        <div *ngIf="pwd.errors.required" class="alert alert-danger">
+                            Password is required
+                        </div>
+                        <div *ngIf="pwd.errors.minlength" class="alert alert-danger">
+                            password length must be between 6 to 8
+                        </div>
+                    </div>
+                    <div style="float: right;">
+                        <a href="" [routerLink]="['/auth/forgetPassword']" routerLinkActive="router-link-active"  class="btn btn-link pull-right">Forget Password...</a>
+                    </div>
+                    <br>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" [disabled]="loginForm.invalid" class="btn btn-lg btn-success btn-block" value="Login">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <a href="" [routerLink]="['/auth/register']" routerLinkActive="router-link-active"  
+                            class="btn btn-link pull-right" style="float: right; padding-top: 10px;">Register Here...</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    </div>

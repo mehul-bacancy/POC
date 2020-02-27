@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form" name="form" #regForm=ngForm  (ngSubmit)="_AuthenticationService.register(regForm)">
+                <fieldset>
+                    <h2>Please Register </h2>
+                    <hr class="colorgraph">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" class="form-control input-lg" email 
+                        [(ngModel)]="model.email" #email="ngModel"
+                        required>
+                    </div>
+                    <div *ngIf="email.invalid && !email.pristine">
+                        <div *ngIf="email.errors.required" class="alert alert-danger">
+                            Email is required    
+                        </div>
+                        <div *ngIf="email.errors.email" class="alert alert-danger">
+                            Enter email in valid form
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" minlength="6" maxlength="8" class="form-control input-lg"
+                        [(ngModel)]="model.password" #pwd="ngModel"
+                        required>
+                    </div>
+                    <div *ngIf="pwd.invalid && !pwd.pristine">
+                        <div *ngIf="pwd.errors.required" class="alert alert-danger">
+                            Password is required
+                        </div>
+                        <div *ngIf="pwd.errors.minlength" class="alert alert-danger">
+                            password length must be between 6 to 8
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" name="confirmPassword" class="form-control input-lg"
+                        [(ngModel)]="model.confirmPassword" #confirPpwd="ngModel"
+                        required>
+                    </div>
+                    <div *ngIf="confirPpwd.touched && confirPpwd.errors?.required" class="alert alert-danger">
+                        Confirm password is required
+                    </div>
+                    <ng-container *ngIf="confirPpwd.valid">
+                        <div [hidden]="pwd.value == confirPpwd.value" class="alert alert-danger">
+                            Confirm password is mismatch
+                        </div>
+                    </ng-container>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" [disabled]="!regForm.form.valid || !(pwd.value == confirPpwd.value)" class="btn btn-lg btn-success btn-block" value="Submit">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <a href="" [routerLink] = "['/auth/login']" routerLinkActive="router-link-active" class="btn btn-link pull-right">Already Registered...</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+    </div>
