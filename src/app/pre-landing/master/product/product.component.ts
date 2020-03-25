@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/app/models/product.interface';
-import { SearchFilterPipe } from 'src/app/pipes/search-filter.pipe';
+
 import { Router } from '@angular/router';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { ExcelService } from 'src/app/services/excel.service';
+import { SearchFilterPipe } from 'src/app/pipes/search-filter.pipe';
 
 @Component({
   selector: 'app-product',
@@ -25,11 +26,15 @@ export class ProductComponent implements OnInit {
   categories=[];
   collectionSize:number = 100;
   content:string="addProduct";
- 
+  searchItem: string = "";
+  filteredProducts = [];
+  selectedSupplier: string;
+  selectedCategory: string;
+
   constructor(
     public _ProductService: ProductService,
     private excelService: ExcelService,
-    public filterPipe: SearchFilterPipe, 
+    public _filterPipe: SearchFilterPipe,
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
     private modalService:NgbModal
@@ -42,13 +47,33 @@ export class ProductComponent implements OnInit {
       this.categories=this._ProductService.getSuppliersOrCategories(data.map(data=>data['category']))
     }) 
   }
-
+  
   getProducts() {
     
     this._ProductService.getAllData().subscribe(data => {
       this.products = data
+      this.filteredProducts = data;
      
     })
+  }
+
+  filterProduct(event, property?) {
+    if (property == 'supplier') {
+      this.selectedSupplier = event.target.value
+      if (this.selectedSupplier == 'Supplier') {
+        this.selectedSupplier = '';
+      }
+
+    }
+    if (property == 'category') {
+      this.selectedCategory = event.target.value
+      if (this.selectedCategory == 'Category') {
+        this.selectedCategory = '';
+      }
+    }
+    this.products = this._filterPipe.transform(this.filteredProducts, this.searchItem, this.selectedSupplier, this.selectedCategory);
+    this.collectionSize = this.products.length
+    console.log(this.products)
   }
 
   open(content)
@@ -67,9 +92,7 @@ export class ProductComponent implements OnInit {
 
   }
  
-  filterProduct(){
-   
-  }
+  
   exportToExcel() {
     let fileName = 'products.csv';
     let columnNames = ["Id", "Name", "Supplier", "Category", "Price", "Discounted", "Discount"];

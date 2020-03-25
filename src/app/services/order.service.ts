@@ -3,7 +3,6 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase, AngularFireList,} from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Iorder } from '../models/order.interface';
-import { IProduct } from '../models/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +33,4 @@ export class OrderService {
     this.angularFireDatabase.object('/orders/' + (order.id - 1)).set(order);
   }
 
-  // showHideCenterModal(){
-  //   this.showCenter = !this.showCenter;
-  // }
-  // showHidemodal(){
-  //   this.showModal = !this.showModal;
-  // }
 }
