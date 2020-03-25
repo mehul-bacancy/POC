@@ -15,6 +15,7 @@ export class AddEditOrderComponent implements OnInit {
   data: Iorder;
   orderLength:number;
   @Input() public editOrder:Iorder;
+  
   constructor(private _orderService:OrderService,
     private activeModal:NgbActiveModal,
     private fb: FormBuilder,
@@ -74,7 +75,7 @@ export class AddEditOrderComponent implements OnInit {
       orderDate: this.orderForm.controls['orderDate'].value,
       orderTotal: this.orderForm.controls['orderTotal'].value,
     }
-    this._orderService.updateProduct(data);
+    this._orderService.updateOrder(data);
 
 
   }
@@ -93,7 +94,7 @@ export class AddEditOrderComponent implements OnInit {
       orderTotal: this.orderForm.controls['orderTotal'].value,
     }
     
-    this._orderService.addProduct(this.data);
+    this._orderService.addOrder(this.data);
     sub.unsubscribe()
   });
   }

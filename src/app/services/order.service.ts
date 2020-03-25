@@ -26,11 +26,11 @@ export class OrderService {
     return this. angularFireDatabase.list<Iorder>('/orders').valueChanges();
   }
 
-  addProduct(order: Iorder) {
+  addOrder(order: Iorder) {
     this.angularFireDatabase.object('/orders/' + (order.id - 1)).set(order);
   }
 
-  updateProduct(order) {
+  updateOrder(order) {
     this.angularFireDatabase.object('/orders/' + (order.id - 1)).set(order);
   }
 

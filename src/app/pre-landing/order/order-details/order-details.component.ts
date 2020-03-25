@@ -15,6 +15,9 @@ import { ExcelService } from 'src/app/services/excel.service';
 export class OrderDetailsComponent implements OnInit {
   orders: Iorder[];
   content:string="addOrder";
+  page = 1;
+  pageSize = 10;
+  collectionSize: number = 100;
   constructor(
     private _orderService: OrderService,
     private excelService: ExcelService,
@@ -47,4 +50,10 @@ export class OrderDetailsComponent implements OnInit {
     modalRef.componentInstance.order=order;
 
   }
+
+  exportToExcel() {
+    let fileName = 'orders.csv';
+    let columnNames = ["Id", "Customer Name", "Shipper", "order Date", "City", "Order Total"];
+    this.excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1)*this.pageSize, (this.page - 1)*this.pageSize + this.pageSize))
+    }
 }
