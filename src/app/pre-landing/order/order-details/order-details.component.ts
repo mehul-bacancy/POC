@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'app-order-details',
@@ -16,6 +17,7 @@ export class OrderDetailsComponent implements OnInit {
   content:string="addOrder";
   constructor(
     private _orderService: OrderService,
+    private excelService: ExcelService,
     private router: Router,
     private modalService:NgbModal
   ) { }
@@ -32,19 +34,6 @@ export class OrderDetailsComponent implements OnInit {
       }
     )
   }
-
-  // showCenterModal(order?: Iorder){
-  //   console.log(order.id)
-  //   this._orderService.orderId = order.id;
-  //   this._orderService.showHideCenterModal();
-  // }
-  // hideCenterModal(){
-  //   this._orderService.showHideCenterModal();
-  // }
-
-  // isShowModal(){
-  //   this._orderService.showHidemodal();
-  // }
   open(content)
   {
       console.log(content);

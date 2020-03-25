@@ -7,6 +7,7 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'app-product',
@@ -27,6 +28,7 @@ export class ProductComponent implements OnInit {
  
   constructor(
     public _ProductService: ProductService,
+    private excelService: ExcelService,
     public filterPipe: SearchFilterPipe, 
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
@@ -42,18 +44,11 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
-    let start = ((this.page - 1) * 10) + 1;
-    let end = this.page * 10
-    this._ProductService.getData(start, end).subscribe(data => {
+    
+    this._ProductService.getAllData().subscribe(data => {
       this.products = data
      
     })
-  }
-
-  onPageClick(){
-    this.getProducts();
-    console.log(this.products)
-
   }
 
   open(content)
@@ -75,5 +70,9 @@ export class ProductComponent implements OnInit {
   filterProduct(){
    
   }
-  
+  exportToExcel() {
+    let fileName = 'products.csv';
+    let columnNames = ["Id", "Name", "Supplier", "Category", "Price", "Discounted", "Discount"];
+    this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1)*this.pageSize, (this.page - 1)*this.pageSize + this.pageSize))
+    }
 }

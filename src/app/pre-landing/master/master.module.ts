@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MasterComponent } from './master.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from './product/product.component';
 import { StockGridComponent } from './stock-grid/stock-grid.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination'
@@ -43,7 +42,7 @@ const routes: Routes =[
 @NgModule({
   declarations: [
     MasterComponent,
-    DashboardComponent, 
+   
     ProductComponent, 
     StockGridComponent,
   ],
