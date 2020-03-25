@@ -1,0 +1,30 @@
+<header>
+    <div id="navbar" class="container-fluid">
+      <div class="container nav-fill w-100">
+        <nav class="navbar navbar-expand-md navbar-light" role="navigation">
+          <button class="navbar-toggler" (click)="toogleNavbar()" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarContent" [ngClass]="{'show': navbarOpen}">
+            <ul class="navbar-nav nav-fill w-100">
+              <li class="nav-item">
+                <a [routerLink]="['/pre-landing/dash-board']" routerLinkActive="router-link-active" role="button" class="btn btn-default">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/pre-landing/master/product']" routerLinkActive="router-link-active" role="button" class="btn btn-default">Products</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/pre-landing/order/order-details']" routerLinkActive="router-link-active" role="button" class="btn btn-default">Orders</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/pre-landing/master/stockGrid']" routerLinkActive="router-link-active" role="button" class="btn btn-default">Stock-Grid</a>
+              </li>
+              <li>
+                <button class="btn btn-danger" (click)="logout()">Logout</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>

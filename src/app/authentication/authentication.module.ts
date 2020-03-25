@@ -10,10 +10,16 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 const routes: Routes =[
   {
     path:'',
+    component: AuthenticationComponent,
     children:[
       {
         path:'login',
         component: LoginComponent
+      },
+      {
+        path: '',
+        redirectTo:'login',
+        pathMatch: 'full'
       },
       { 
         path: 'register',
@@ -22,7 +28,8 @@ const routes: Routes =[
       {
         path: 'forgetPassword',
         component: ForgetPasswordComponent
-      }
+      },
+     
     ]
   } 
 ];
@@ -30,7 +37,8 @@ const routes: Routes =[
   declarations: [
     AuthenticationComponent, 
     LoginComponent, 
-    RegistrationComponent, ForgetPasswordComponent
+    RegistrationComponent, 
+    ForgetPasswordComponent
   ],
   imports: [
     CommonModule,

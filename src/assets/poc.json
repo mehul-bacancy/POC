@@ -1,0 +1,543 @@
+{
+    "categories" : [ {
+      "id" : 1,
+      "name" : "Mobile"
+    }, {
+      "id" : 2,
+      "name" : "Headphones"
+    }, {
+      "id" : 3,
+      "name" : "Tv"
+    }, {
+      "id" : 4,
+      "name" : "Camera"
+    }, {
+      "id" : 5,
+      "name" : "Laptop"
+    } ],
+    "orders" : [ {
+      "address" : "211 , Satya Niketan, Ring Road",
+      "city" : "Delhi",
+      "customerName" : "Kalp",
+      "id" : 1,
+      "orderDate" : "2020-03-01",
+      "orderTotal" : 1,
+      "shipper" : "John"
+    }, {
+      "address" : "B/302, Kailash Esplanade, Lbs Marg, Ghatkopar (west)",
+      "city" : "Mumbai",
+      "customerName" : "Suresh",
+      "id" : 2,
+      "orderDate" : "2018-07-19",
+      "orderTotal" : 20000,
+      "shipper" : "Christian"
+    }, {
+      "address" : "53 , Raja S C Mullick Road, Garia",
+      "city" : "Kolkata",
+      "customerName" : "Mehul",
+      "id" : 3,
+      "orderDate" : "2018-12-29",
+      "orderTotal" : 30000,
+      "shipper" : "Mathew"
+    }, {
+      "address" : "Shop No 45, Main Road, G B Road",
+      "city" : "Mysore",
+      "customerName" : "Kishan",
+      "id" : 4,
+      "orderDate" : "2019-01-12",
+      "orderTotal" : 40000,
+      "shipper" : "Michel"
+    }, {
+      "address" : "Central Hospital Road, Near Vishal Marriage Hall, Ulhasnagar",
+      "city" : "Pune",
+      "customerName" : "Nirali",
+      "id" : 5,
+      "orderDate" : "2019-08-20",
+      "orderTotal" : 50000,
+      "shipper" : "Mike"
+    }, {
+      "address" : "Bhakti Nagar Station, 10, Bhaktinagar Station, Bhakti Nagar",
+      "city" : "Rajkot",
+      "customerName" : "Riya",
+      "id" : 6,
+      "orderDate" : "2020-02-10",
+      "orderTotal" : 60000,
+      "shipper" : "Cristi"
+    }, {
+      "address" : "kalp",
+      "city" : "kalp",
+      "customerName" : "Kalp",
+      "id" : 7,
+      "orderDate" : "2020-03-01",
+      "orderTotal" : 10000,
+      "shipper" : "kalp"
+    }, {
+      "address" : "a",
+      "city" : "a",
+      "customerName" : "a",
+      "id" : 8,
+      "orderDate" : "2020-03-01",
+      "orderTotal" : 2,
+      "shipper" : "a"
+    } ],
+    "products" : [ {
+      "category" : "Mobile",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 1,
+      "name" : "iPhone",
+      "price" : 20000,
+      "supplier" : "supp3"
+    }, {
+      "category" : "Laptop",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 2,
+      "name" : "HP",
+      "price" : 20000,
+      "supplier" : "Chris"
+    }, {
+      "category" : "Mobile",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 3,
+      "name" : "Sony",
+      "price" : 20000,
+      "supplier" : "Chris"
+    }, {
+      "category" : "Camera",
+      "discount" : 5,
+      "discounted" : "Yes",
+      "id" : 4,
+      "name" : "Kodak",
+      "price" : 25000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Headphones",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 5,
+      "name" : "Sennheiser",
+      "price" : 8000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Mobile",
+      "discount" : 10,
+      "discounted" : "Yes",
+      "id" : 6,
+      "name" : "Samsung",
+      "price" : 25000,
+      "supplier" : "Harry"
+    }, {
+      "category" : "Laptop",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 7,
+      "name" : "Dell",
+      "price" : 25000,
+      "supplier" : "Harry"
+    }, {
+      "category" : "Tv",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 8,
+      "name" : "LG",
+      "price" : 25000,
+      "supplier" : "Harry"
+    }, {
+      "category" : "Camera",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 9,
+      "name" : "Philips",
+      "price" : 30000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Headphones",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 10,
+      "name" : "Audio-Technica",
+      "price" : 2500,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Mobile",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 11,
+      "name" : "Asus",
+      "price" : 20000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Laptop",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 12,
+      "name" : "Samsung",
+      "price" : 20000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Tv",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 13,
+      "name" : "Samsung",
+      "price" : 20000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Camera",
+      "discount" : 8,
+      "discounted" : "Yes",
+      "id" : 14,
+      "name" : " Pentax",
+      "price" : 20200,
+      "supplier" : "Harry"
+    }, {
+      "category" : "Headphones",
+      "discount" : 18,
+      "discounted" : "Yes",
+      "id" : 15,
+      "name" : "Beyerdynamic",
+      "price" : 2200,
+      "supplier" : "Chris"
+    }, {
+      "category" : "Mobile",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 16,
+      "name" : "Blackberry",
+      "price" : 20000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Laptop",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 17,
+      "name" : "ASUS",
+      "price" : 20000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Tv",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 18,
+      "name" : "Panasonic",
+      "price" : 20000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Camera",
+      "discount" : 10,
+      "discounted" : "Yes",
+      "id" : 19,
+      "name" : "Nikon",
+      "price" : 15000,
+      "supplier" : "Chris"
+    }, {
+      "category" : "Headphones",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 20,
+      "name" : "Shure",
+      "price" : 1500,
+      "supplier" : "Harry"
+    }, {
+      "category" : "Mobile",
+      "discount" : 10,
+      "discounted" : "Yes",
+      "id" : 21,
+      "name" : "Redmi Mi",
+      "price" : 20000,
+      "supplier" : "Thomas"
+    }, {
+      "category" : "Laptop",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 22,
+      "name" : "MSI",
+      "price" : 20000,
+      "supplier" : "Thomas"
+    }, {
+      "category" : "Tv",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 23,
+      "name" : "Toshiba",
+      "price" : 20000,
+      "supplier" : "Thomas"
+    }, {
+      "category" : "Camera",
+      "discount" : 20,
+      "discounted" : "Yes",
+      "id" : 24,
+      "name" : "Canon",
+      "price" : 26000,
+      "supplier" : "Mason"
+    }, {
+      "category" : "Headphones",
+      "discount" : 13,
+      "discounted" : "Yes",
+      "id" : 25,
+      "name" : "Grado",
+      "price" : 4000,
+      "supplier" : "James"
+    }, {
+      "category" : "Mobile",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 26,
+      "name" : "Real Me",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Laptop",
+      "discount" : 5,
+      "discounted" : "Yes",
+      "id" : 27,
+      "name" : "dell",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Tv",
+      "discount" : 15,
+      "discounted" : "Yes",
+      "id" : 28,
+      "name" : "Hitachi",
+      "price" : 20000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Camera",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 29,
+      "name" : "Samsung",
+      "price" : 40000,
+      "supplier" : "James"
+    }, {
+      "category" : "Headphones",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 30,
+      "name" : "Bose",
+      "price" : 6000,
+      "supplier" : "Mason"
+    }, {
+      "category" : "Mobile",
+      "discount" : 30,
+      "discounted" : "Yes",
+      "id" : 31,
+      "name" : "One Plus",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Laptop",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 32,
+      "name" : "Apple",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Tv",
+      "discount" : 5,
+      "discounted" : "Yes",
+      "id" : 33,
+      "name" : "Tcl",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Camera",
+      "discount" : 9,
+      "discounted" : "No",
+      "id" : 34,
+      "name" : "Panasonic",
+      "price" : 30000,
+      "supplier" : "Jackson"
+    }, {
+      "category" : "Headphones",
+      "discount" : 29,
+      "discounted" : "Yes",
+      "id" : 35,
+      "name" : "AKG",
+      "price" : 3000,
+      "supplier" : "William"
+    }, {
+      "category" : "Mobile",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 36,
+      "name" : "Lenovo",
+      "price" : 10000,
+      "supplier" : "David"
+    }, {
+      "category" : "Laptop",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 37,
+      "name" : "Lenovo",
+      "price" : 10000,
+      "supplier" : "David"
+    }, {
+      "category" : "Tv",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 38,
+      "name" : "Philips",
+      "price" : 20000,
+      "supplier" : "James"
+    }, {
+      "category" : "Camera",
+      "discount" : 20,
+      "discounted" : "Yes",
+      "id" : 39,
+      "name" : "Olympus",
+      "price" : 11000,
+      "supplier" : "William"
+    }, {
+      "category" : "Headphones",
+      "discount" : 23,
+      "discounted" : "Yes",
+      "id" : 40,
+      "name" : "Sony",
+      "price" : 10000,
+      "supplier" : "Jackson"
+    }, {
+      "category" : "Mobile",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 41,
+      "name" : "Vivo",
+      "price" : 25000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Laptop",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 42,
+      "name" : "Acer",
+      "price" : 25000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Tv",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 43,
+      "name" : "Onida",
+      "price" : 10000,
+      "supplier" : "David"
+    }, {
+      "category" : "Camera",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 44,
+      "name" : "Fujifilm",
+      "price" : 27500,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Headphones",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 45,
+      "name" : "Panasonic",
+      "price" : 2750,
+      "supplier" : "David"
+    }, {
+      "category" : "Mobile",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 46,
+      "name" : "Oppo.",
+      "price" : 15000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Laptop",
+      "discount" : 5,
+      "discounted" : "Yes",
+      "id" : 47,
+      "name" : "Toshiba.",
+      "price" : 15000,
+      "supplier" : "Bob"
+    }, {
+      "category" : "Tv",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 48,
+      "name" : "Intex",
+      "price" : 25000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Camera",
+      "discount" : 25,
+      "discounted" : "Yes",
+      "id" : 49,
+      "name" : "Sony",
+      "price" : 50000,
+      "supplier" : "David"
+    }, {
+      "category" : "Headphones",
+      "discount" : 0,
+      "discounted" : "No",
+      "id" : 50,
+      "name" : "Philips",
+      "price" : 5000,
+      "supplier" : "Ronaldo"
+    }, {
+      "category" : "Mobile",
+      "discount" : "",
+      "discounted" : "No",
+      "id" : 51,
+      "name" : "1",
+      "price" : 1,
+      "supplier" : "supp2"
+    } ],
+    "suppliers" : [ {
+      "id" : 1,
+      "name" : "Chris"
+    }, {
+      "id" : 2,
+      "name" : "Thomas"
+    }, {
+      "id" : 3,
+      "name" : "Harry"
+    }, {
+      "id" : 4,
+      "name" : "Bob"
+    }, {
+      "id" : 5,
+      "name" : "David"
+    }, {
+      "id" : 6,
+      "name" : "Ronaldo"
+    }, {
+      "id" : 7,
+      "name" : "William"
+    }, {
+      "id" : 8,
+      "name" : "James"
+    }, {
+      "id" : 9,
+      "name" : "Jackson"
+    }, {
+      "id" : 10,
+      "name" : "Mason"
+    }, {
+      "id" : 10,
+      "name" : "supp"
+    }, {
+      "id" : 11,
+      "name" : "supp1"
+    }, {
+      "id" : 12,
+      "name" : "supp2"
+    }, {
+      "id" : 13,
+      "name" : "supp3"
+    } ],
+    "users" : {
+      "Ql8gJM8nmLMGGV33NH3YrRwQm1o1" : {
+        "userDetails" : {
+          "email" : "kalplathia101@gmail.com",
+          "labelColor" : "#000070"
+        }
+      }
+    }
+  }

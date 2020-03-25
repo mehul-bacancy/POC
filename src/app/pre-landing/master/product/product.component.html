@@ -1,0 +1,60 @@
+<div class="container">
+  <h2><b>Product</b></h2>
+  <div>
+    <div>
+      <label for="search">Search: </label>
+      <input type="text" placeholder="Name or Id">
+      <select>
+        <option *ngFor="let s of suppliers">{{s}}</option>
+      </select>
+      <select>
+        <option *ngFor="let c of categories">{{c}}</option>
+      </select>
+      <button type="button" class="btn btn-primary" (click)="open(content)" style="float: right;">
+        Add
+      </button>
+
+    </div>
+    <!-- product table -->
+    <table class="table table-hover">
+      <thead>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Supplier</th>
+        <th>Catogary</th>
+        <th>Price</th>
+        <th>Discounted</th>
+        <th>Discount</th>
+        <th>More</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.supplier}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.discounted}}</td>
+          <td>
+            <ng-container *ngIf="(product.discounted == 'Yes')">
+              <input type="text" [(ngModel)]="product.discount">%
+            </ng-container>
+            <ng-container *ngIf="(product.discounted == 'No')">
+              -
+            </ng-container>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="opencenterModal(product)">
+              edit
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <pagination [totalItems]="collectionSize" [(ngModel)]="page" (click)="onPageClick()">
+      </pagination>
+    </div>
+  </div>
+</div>

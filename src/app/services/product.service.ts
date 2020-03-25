@@ -11,20 +11,14 @@ export class ProductService {
   productsRef: AngularFireList<IProduct>;
   id:number;
   product: IProduct;
-  showModal : boolean = false;
-  // showModal = new BehaviorSubject <boolean> ;
+  
   constructor(   
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth) { 
       this.productsRef=this.afDatabase.list('/products');
-      // this.showModal = new BehaviorSubject(this.isShowModal);
       
     }
-   showHidemodal(){
-     this.showModal = ! this.showModal;
-   }
-    //   this.isShowModal.next(!this.isShowModal);
-    // }
+ 
 
     getData(start: number, end: number):Observable<IProduct[]>
     {
@@ -39,13 +33,11 @@ export class ProductService {
       return this.afDatabase.database.ref(`/products/${prodId}`);
     }
 
-    updateProduct(Key, value: IProduct){
-      this.productsRef.update(Key, value);
-    
+    addProduct(product: IProduct) {
+      this.afDatabase.object('/products/' + (product.id - 1)).set(product);
     }
-    
-    addProduct(product){
-      console.log('service',product)
+  
+    updateProduct(product) {
       this.afDatabase.object('/products/' + (product.id - 1)).set(product)
     }
 

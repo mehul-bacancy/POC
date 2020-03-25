@@ -1,0 +1,90 @@
+<div class="container">
+  <h2><b>Order</b></h2>
+  <div>
+    <div>
+      <label for="search">Search: </label>
+      <input type="text" placeholder="Name or Id">
+      <div class="col-xs-4 pt-3" style="margin-left:420px">
+        <button type="button" class="btn btn-primary" (click)="open(content)" >
+          Add
+        </button>
+
+      </div>&nbsp;
+      <div class="col-xs-4 pt-3">
+        <button type="submit" class="btn btn-success"  style="float:right;">
+          Advance Search</button>
+      </div>
+      <!-- <button type="button" class="btn btn-primary" (click)="isShowModal()" style="float: right;" data-toggle="modal"
+        data-target="#myModal">
+        add
+      </button> -->
+    </div>
+    <!-- product table -->
+    <table class="table table-hover">
+      <thead>
+        <th>Order Id</th>
+        <th>Customer Name</th>
+        <th>Shipper</th>
+        <th>Order Date</th>
+        <th>City</th>
+        <th>Order Total</th>
+        <th>More</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.id}}</td>
+          <td>{{order.customerName}}</td>
+          <td>{{order.shipper}}</td>
+          <td>{{order.orderDate}}</td>
+          <td>{{order.city}}</td>
+          <td>{{order.orderTotal}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="opencenterModal(order)">
+              Edit
+            </button>
+            <!-- <button class="btn btn-info" (click)="showCenterModal(order)" data-toggle="center-modal"
+            data-target="#centerModal">
+              Edit
+            </button> -->
+          </td>
+        </tr>
+      </tbody>
+      <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+    </table>
+  </div>
+  <!-- Side Modal -->
+  <!-- <div class="modal" id="myModal" [ngClass]="{'show':_orderService.showModal}">
+    <div class="sidenav modal-holder">
+      <div class="modal-header">
+        <h4 class="modal-title">Add order</h4>
+        <button type="button" class="btn btn-danger close" aria-label="Close" (click)="isShowModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-order></app-add-edit-order>
+
+      </div>
+    </div>
+  </div> -->
+<!-- center modal -->
+  <!-- <div class="center-modal" id="centerModal" [ngClass]="{'show':_orderService.showCenter}">
+    <div class="center-modal-dialog">
+      <div class="center-modal-content">
+
+       
+        <div class="center-modal-header">
+          <h2><b>Add Order</b></h2>
+          <button type="button" class="close" (click)="hideCenterModal()" data-dismiss="center-modal">&times;</button>
+        </div>
+
+        
+        <div class="center-modal-body">
+          <app-add-edit-order></app-add-edit-order>
+
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+</div>

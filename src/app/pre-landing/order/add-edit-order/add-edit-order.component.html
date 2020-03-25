@@ -1,0 +1,118 @@
+<!-- <div class="container">
+    <form [formGroup]="addOrderForm" (ngSubmit)="onUpdate(orderObj['id'])">
+        <div class="form-group">
+            <label for="customerName">Customer Name: </label>
+            <input type="text" name="customerName"
+                class="form-control ml-2" 
+                placeholder="Customer Name"
+                formControlName="customerName">
+        </div>
+        <div class="alert alert-danger mt-2" 
+            role="alert"
+            *ngIf="addOrderForm.get('customerName').errors?.required && addOrderForm.get('customerName').touched">
+            Customer Name is required
+        </div>
+        <div class="form-group">
+            <label for="address">Address: </label>
+            <input type="text" name="address"
+                class="form-control ml-2" 
+                placeholder="Address"
+                formControlName="address">
+        </div>
+        <div class="alert alert-danger mt-2" 
+            role="alert"
+            *ngIf="addOrderForm.get('address').errors?.required && addOrderForm.get('address').touched">
+            Address is required
+        </div>
+        <div class="form-group">
+            <label for="city">City: </label>
+            <input type="text" name="city"
+                class="form-control ml-2" 
+                placeholder="City"
+                formControlName="city">
+        </div>
+        <div class="alert alert-danger mt-2" 
+            role="alert"
+            *ngIf="addOrderForm.get('city').errors?.required && addOrderForm.get('city').touched">
+            city is required
+        </div>
+        <div class="form-group">
+            <label for="shipper">shipper: </label>
+            <input type="text" name="shipper"
+                class="form-control ml-2" 
+                placeholder="shipper"
+                formControlName="shipper">
+        </div>
+        <div class="alert alert-danger mt-2" 
+            role="alert"
+            *ngIf="addOrderForm.get('shipper').errors?.required && addOrderForm.get('shipper').touched">
+            shipper is required
+        </div>
+        <div class="form-group">
+            <label for="orderDate">order Date:  </label>
+            <input type="date" name="orderDate"
+            class="form-control ml-2"
+            formControlName="orderDate"
+            >
+        </div>
+        <div class="form-group">
+            <label for="orderTotal">order Total:  </label>
+            <input type="text" name="orderTotal"
+                class="form-control ml-2" 
+                placeholder="order Total"
+                formControlName="orderTotal">
+        </div>
+        <div class="alert alert-danger mt-2" 
+            role="alert"
+            *ngIf="addOrderForm.get('orderTotal').errors?.required && addOrderForm.get('orderTotal').touched">
+            order Total is required
+        </div>
+       
+        <div>
+            <button type="submit"  
+                class="btn btn-block btn-primary" (click)="isShowModal()">
+                Add
+            </button>
+        </div>
+        <div>
+            <button type="reset"
+            class="btn btn-block btn-danger" (click)="isShowModal()">
+            Cancel
+            </button>
+        </div>
+    </form>
+</div>
+ -->
+ <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+     <label for="Name">CustomerName</label>
+     <input type="text" class="form-control" formControlName="customerName">
+    </div>
+    <div class="form-group">
+        <label for="Name">Address</label>
+        <input type="text" class="form-control" formControlName="address">
+       </div>
+    <div class="form-group">
+     <label for="Name">City</label>
+     <input type="text" class="form-control" formControlName="city">
+    </div>
+    <div class="form-group">
+     <label for="Name">Shipper</label>
+     <input type="text" class="form-control" formControlName="shipper">
+    </div>
+    <div class="form-group">
+     <label for="Name">OrderDate</label>
+     <input type="date" class="form-control" formControlName="orderDate">
+    </div>
+    <div class="form-group">
+        <label for="Name">OrderTotal</label>
+        <input type="text" class="form-control" formControlName="orderTotal">
+    </div>
+
+    
+   <br>
+   
+   <button type="submit" class="btn btn-success" [disabled]="!orderForm.valid">
+     Submit
+   </button>
+ </form>

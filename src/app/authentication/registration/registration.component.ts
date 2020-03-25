@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
-  // navigateToLogin(){
-  //   this.router.navigateByUrl('auth/login');
-  // }
+  register(){
+    this._AuthenticationService.register(this.model.email, this.model.password);
+  }
 }

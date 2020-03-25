@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  // navigateToReg(){
-  //   this.router.navigateByUrl('auth/register');
-  // }
+  login(){
+   this._AuthenticationService.login(this.model.email, this.model.password)
+  }
 }
