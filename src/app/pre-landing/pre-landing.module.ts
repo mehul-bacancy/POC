@@ -21,8 +21,8 @@ const routes: Routes=[
         component: DashBoardComponent
       },
       {
-        path: 'master',
-        loadChildren: ()=>import('./master/master.module').then(master=>master.MasterModule)
+        path: 'product',
+        loadChildren: ()=>import('./product/product.module').then(product=>product.ProductModule)
       },
       {
         path: 'order',

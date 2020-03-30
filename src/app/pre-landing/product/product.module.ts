@@ -7,6 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanActivateGuard } from 'src/app/gaurds/can-activate.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination'
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
+import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 
 const routes: Routes =[
   {
@@ -20,27 +25,37 @@ const routes: Routes =[
       },
       { 
         path: 'product-details',
-        component: ProductComponent,
+        component: ProductDetailsComponent,
         canActivate: [CanActivateGuard]
         
       },
-      {
-        path: 'add-edit',
-        component: AddEditProductComponent
-      }
+     
     ]
   } 
 ];
 
 @NgModule({
-  declarations: [AddEditProductComponent, ProductDetailsComponent, ProductComponent],
+  declarations: [
+    ProductComponent,
+    ProductDetailsComponent
+   
+    
+    
+  ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes), 
+    PaginationModule.forRoot(),
+    NgxPaginationModule,
     ReactiveFormsModule,
     SharedModule,
-    
+    NgbModule,
+  ],
+  entryComponents:[
+    SideModalComponent,
+    AddEditProductComponent,
+    CenterModalComponent
   ]
 })
 export class ProductModule { }

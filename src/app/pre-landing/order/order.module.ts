@@ -10,6 +10,7 @@ import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.compone
 import { AddEditOrderComponent } from './add-edit-order/add-edit-order.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdvanceSearchComponent } from './advance-search/advance-search.component';
 
 
 const routes: Routes =[
@@ -37,6 +38,7 @@ const routes: Routes =[
   declarations: [
     OrderComponent,
     OrderDetailsComponent,
+    
     ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ const routes: Routes =[
   entryComponents:[
     SideModalComponent,
     AddEditOrderComponent,
-    CenterModalComponent
+    CenterModalComponent,
+    AdvanceSearchComponent
   ]
 })
 export class OrderModule { }

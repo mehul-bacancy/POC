@@ -18,16 +18,6 @@ const routes: Routes = [
     path: 'pre-landing',
     loadChildren: ()=> import('./pre-landing/pre-landing.module').then(pre=>pre.PreLandingModule)
   },
-  // {
-  //   path: 'master',
-  //   loadChildren:()=>import('./pre-landing/master/master.module').then(master=>master.MasterModule),
-  //   canLoad: [CanLoadGuard]
-  // },
-  // {
-  //   path: 'order',
-  //   loadChildren:()=>import('./pre-landing/order/order.module').then(order=>order.OrderModule),
-  //   canLoad: [CanLoadGuard]
-  // },
   {
     path: 'page-not-found',
     component: PageNotFoundComponent

@@ -3,7 +3,7 @@ export interface Iorder{
     city: string;
     customerName: string;
     id: number;
-    orderDate: string;
+    orderDate: Date;
     orderTotal: number;
     shipper: string;
 }
