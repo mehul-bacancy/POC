@@ -1,40 +1,64 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+  <div class="alert alert-danger mt-2" role="alert"
+    *ngIf="productForm.get('name').errors?.required && productForm.get('name').touched">
+    Name is required
+  </div>
+
+  <div class="form-group">
+    <label for="Name">supplier</label>
+    <input type="text" class="form-control" formControlName="supplier">
+  </div>
+  <div class="alert alert-danger mt-2" role="alert"
+    *ngIf="productForm.get('supplier').errors?.required && productForm.get('supplier').touched">
+    Supplier is required
+  </div>
+
+  <div class="form-group">
+    <label for="Name">Category</label>
+    <input type="text" class="form-control" formControlName="category">
+  </div>
+  <div class="alert alert-danger mt-2" role="alert"
+    *ngIf="productForm.get('category').errors?.required && productForm.get('category').touched">
+    Category is required
+  </div>
+
+  <div class="form-group">
+    <label for="Name">Price</label>
+    <input type="number" class="form-control" formControlName="price">
+  </div>
+  <div class="alert alert-danger mt-2" role="alert"
+    *ngIf="productForm.get('price').errors?.required && productForm.get('price').touched">
+    Price is required
+  </div>
+
+  <div class="form-group">
+    <label>Discounted</label><br>
+    <input id="Yes" type="radio" value="Yes" name="discounted" (change)="isShowDiscount($event)"
+      formControlName="discounted" checked="checked">
+    <label for="Yes">Yes</label>
+    <input id="No" type="radio" value="No" name="discounted" (change)="isShowDiscount($event)"
+      formControlName="discounted">
+    <label for="No">No</label>
+  </div>
+
+  <div *ngIf="showDiscount">
     <div class="form-group">
-     <label for="Name">Name</label>
-     <input type="text" class="form-control" formControlName="name">
+      <label>Discount</label>
+      <input type="text" class="form-control" formControlName="discount">
     </div>
-    <div class="form-group">
-     <label for="Name">supplier</label>
-     <input type="text" class="form-control" formControlName="supplier">
+    <div class="alert alert-danger mt-2" role="alert"
+      *ngIf="productForm.get('discount').errors?.required && productForm.get('discount').touched">
+      Discount is required
     </div>
-    <div class="form-group">
-     <label for="Name">Category</label>
-     <input type="text" class="form-control" formControlName="category">
-    </div>
-    <div class="form-group">
-     <label for="Name">Price</label>
-     <input type="text" class="form-control" formControlName="price">
-    </div>
-    
-   
-     <div class="form-group">
-       <label>Discounted</label><br>
-       <input id="Yes" type="radio" value="Yes" name="discounted" (change)="isShowDiscount($event)"
-         formControlName="discounted" checked="checked">
-       <label for="Yes">Yes</label>
-       <input id="No" type="radio" value="No" name="discounted" (change)="isShowDiscount($event)"
-         formControlName="discounted">
-       <label for="No">No</label>
-     
-     </div>
-    <div *ngIf="showDiscount">
-     <div class="form-group">
-     <label>Discount<input type="text" class="form-control" formControlName="discount"></label>
-   </div>
-   </div>
-   <br>
-   <!-- // -->
-   <button type="submit" class="btn btn-success" [disabled]="!productForm.valid">
-     Submit
-   </button>
- </form>
+  </div>
+
+  <br>
+
+  <button type="submit" class="btn btn-success" [disabled]="!productForm.valid">
+    Submit
+  </button>
+</form>

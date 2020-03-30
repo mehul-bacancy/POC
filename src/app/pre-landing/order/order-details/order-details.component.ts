@@ -16,135 +16,65 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
-  orders:Iorder[]=[];
+
+  orders: Iorder[] = [];
   @Input() page = 1;
   @Input() pageSize = 10;
   @Input() collectionSize: number = 100;
- 
-  content:string="addOrder";
-  searchItem:string;
-  filteredOrders:Iorder[] = [];
-  advanceSearchContent:string="advanceSearch";
- 
-  constructor(private _orderService:OrderService,private _orderFilter:SearchOrderPipe,private modalService:NgbModal,private _excelService:ExcelService) { }
+  content: string = "addOrder";
+  searchItem: string;
+  filteredOrders: Iorder[] = [];
+  advanceSearchContent: string = "advanceSearch";
+  isShowSpinner: boolean = true;
+
+  constructor(private _orderService: OrderService,
+    private _orderFilter: SearchOrderPipe,
+    private modalService: NgbModal,
+    private _excelService: ExcelService
+  ) { }
 
   ngOnInit() {
     this.getAllOrderData();
-    this._orderService.getFilteredObs().subscribe(filterData =>{ 
-      // debugger
-      this.orders=filterData;
-      this.collectionSize=this.orders.length;
+    this._orderService.getFilteredObs().subscribe(filterData => {
+      this.orders = filterData;
+      this.collectionSize = this.orders.length;
     });
-   
   }
 
-
- 
-  getAllOrderData()
-  {
-  this._orderService.getOrdersData().subscribe(data=>
-    {
+  getAllOrderData() {
+    this._orderService.getOrdersData().subscribe(data => {
       console.log(data);
       this.collectionSize = data.length;
-      this.filteredOrders=data;
-      this.orders=data;
+      this.filteredOrders = data;
+      this.orders = data;
+      this.isShowSpinner = false;
     })
   }
 
-  filterOrder($event){
-     this.orders=this._orderFilter.transform(this.filteredOrders, this.searchItem);
+  filterOrder($event) {
+    this.orders = this._orderFilter.transform(this.filteredOrders, this.searchItem);
     this.collectionSize = this.orders.length
   }
 
-
-  openSideModal(content)
-  {
-     // console.log(content);
-      const modalAddRef=this.modalService.open(SideModalComponent);
-      modalAddRef.componentInstance.content=content;
+  openSideModal(content) {
+    const modalAddRef = this.modalService.open(SideModalComponent);
+    modalAddRef.componentInstance.content = content;
   }
 
-  openCenterModal(order:Iorder)
-  {
-    const modalRef=this.modalService.open(CenterModalComponent);
-    modalRef.componentInstance.order=order;
-
+  openCenterModal(order: Iorder) {
+    const modalRef = this.modalService.open(CenterModalComponent);
+    modalRef.componentInstance.order = order;
   }
 
-  openAdvanceSearchSideModal(advanceSearchcontent)
-  {
-    const modalSearchRef=this.modalService.open(SideModalComponent);
-    modalSearchRef.componentInstance.advanceSearchcontent=advanceSearchcontent;
+  openAdvanceSearchSideModal(advanceSearchcontent) {
+    const modalSearchRef = this.modalService.open(SideModalComponent);
+    modalSearchRef.componentInstance.advanceSearchcontent = advanceSearchcontent;
   }
 
-  exportToExcel()
-  {
+  exportToExcel() {
     let fileName = 'orders.csv';
     let columnNames = ["Id", "Customer Name", "Shipper", "order Date", "Order Total"];
-    this._excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1)*this.pageSize, (this.page - 1)*this.pageSize + this.pageSize))
-    }
-  // orders: Iorder[];
-  // content: string = "addOrder";
-  // page = 1;
-  // pageSize = 10;
-  // collectionSize: number = 100;
-  // searchItem: string;
-  // filteredOrders: Iorder[] = [];
-  // advanceSearchContent: string = "advanceSearch";
-  
-  // constructor(
-  //   private _orderService: OrderService,
-  //   private excelService: ExcelService,
-  //   private router: Router,
-  //   private _orderFilter: SearchOrderPipe,
-  //   private _advanceSearch: AdvanceSearchPipe,
-  //   private modalService: NgbModal
-  // ) { }
-
-  // ngOnInit() {
-  //   this.getOrders();
-  //   this._orderService.getFilteredObs().subscribe(filterData =>{
-  //     this.orders=filterData;
-  //     this.collectionSize=this.orders.length;
-  //     });
-  // }
-
-  // getOrders() {
-  //   this._orderService.getOrdersData().subscribe(
-  //     data => {
-  //       this.orders = data;
-  //       this.collectionSize = data.length;
-  //       this.filteredOrders = data;
-  //     }
-  //   )
-  // }
-  // open(content) {
-  //   console.log(content);
-  //   const modalAddRef = this.modalService.open(SideModalComponent);
-  //   modalAddRef.componentInstance.content = content;
-  // }
-
-  // opencenterModal(order: Iorder) {
-  //   const modalRef = this.modalService.open(CenterModalComponent);
-  //   modalRef.componentInstance.order = order;
-
-  // }
-
-  // openAdvanceSearchSideModal(advanceSearchcontent)
-  // {
-  //   const modalSearchRef=this.modalService.open(SideModalComponent);
-  //   modalSearchRef.componentInstance.advanceSearchcontent=advanceSearchcontent;
-  // }
-
-  // filterOrder($event) {
-  //   this.orders = this._orderFilter.transform(this.filteredOrders, this.searchItem);
-  //   this.collectionSize = this.orders.length
-  // }
-
-  // exportToExcel() {
-  //   let fileName = 'orders.csv';
-  //   let columnNames = ["Id", "Customer Name", "Shipper", "order Date", "City", "Order Total"];
-  //   this.excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
-  // }
+    this._excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
+  }
 
 }

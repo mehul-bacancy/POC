@@ -1,7 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CanLoadGuard } from './gaurds/can-load.guard';
+import { CanLoadGuard } from './guards/can-load.guard';
 
 
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'pre-landing',
-    loadChildren: ()=> import('./pre-landing/pre-landing.module').then(pre=>pre.PreLandingModule)
+    loadChildren: ()=> import('./pre-landing/pre-landing.module').then(pre=>pre.PreLandingModule),
+    canLoad: [CanLoadGuard]
   },
   {
     path: 'page-not-found',

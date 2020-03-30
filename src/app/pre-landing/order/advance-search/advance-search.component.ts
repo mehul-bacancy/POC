@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Iorder } from 'src/app/models/order.interface';
 import { OrderService } from 'src/app/services/order.service';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AdvanceSearchPipe } from 'src/app/pipes/advance-search.pipe';
 import { IadvanceSearch } from 'src/app/models/advanceSearch.interface';
@@ -12,6 +12,7 @@ import { IadvanceSearch } from 'src/app/models/advanceSearch.interface';
   styleUrls: ['./advance-search.component.scss']
 })
 export class AdvanceSearchComponent implements OnInit {
+
   orders: Iorder[] = [];
   customerName: Iorder[] = [];
   shipper: Iorder[] = [];
@@ -21,7 +22,10 @@ export class AdvanceSearchComponent implements OnInit {
   selectedShipper: [];
   selectedFields: IadvanceSearch;
 
-  constructor(private _orderService: OrderService, private fb: FormBuilder, private _searchFilter: AdvanceSearchPipe) { }
+  constructor(private _orderService: OrderService,
+    private fb: FormBuilder,
+    private activeModal: NgbActiveModal,
+    private _searchFilter: AdvanceSearchPipe) { }
 
   advanceSearchForm = this.fb.group({
     selectedShippers: [, [Validators.required]],
@@ -31,6 +35,7 @@ export class AdvanceSearchComponent implements OnInit {
     selectedFromAmount: [, [Validators.required]],
     selectedToAmount: [, [Validators.required]],
   })
+
   ngOnInit() {
     this._orderService.getOrdersData().subscribe(data => {
       this.orders = data;
@@ -38,7 +43,6 @@ export class AdvanceSearchComponent implements OnInit {
       this.filteredOrders = data;
       this.customerName = this._orderService.getCustomerNameOrShipper(data.map(data => data['customerName']));
       this.shipper = this._orderService.getCustomerNameOrShipper(data.map(data => data['shipper']));
-
     })
   }
 
@@ -51,9 +55,9 @@ export class AdvanceSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.advanceSearchForm.value);
     this.orders = this._searchFilter.transform(this.filteredOrders, this.advanceSearchForm.value);
-    console.log("order", this.orders);
     this._orderService.filterdData(this.orders);
+    this.activeModal.close();
   }
+
 }

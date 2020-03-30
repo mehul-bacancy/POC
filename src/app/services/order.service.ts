@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase, AngularFireList,} from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList, } from '@angular/fire/database';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Iorder } from '../models/order.interface';
 
@@ -8,20 +8,22 @@ import { Iorder } from '../models/order.interface';
   providedIn: 'root'
 })
 export class OrderService {
+
   orderRef: AngularFireList<Iorder>;
   id: number;
   private filteredData: BehaviorSubject<Iorder[]> = new BehaviorSubject([]);
   order: Iorder;
   orderId: number;
+
   constructor(
     private angularFireDatabase: AngularFireDatabase,
     private angularFireAuth: AngularFireAuth
-  ) { 
+  ) {
     this.orderRef = this.angularFireDatabase.list('/orders');
   }
 
-  getOrdersData(): Observable<Iorder[]>{
-    return this. angularFireDatabase.list<Iorder>('/orders').valueChanges();
+  getOrdersData(): Observable<Iorder[]> {
+    return this.angularFireDatabase.list<Iorder>('/orders').valueChanges();
   }
 
   addOrder(order: Iorder) {
@@ -47,13 +49,10 @@ export class OrderService {
 
   getFilteredObs(): Observable<Iorder[]> {
     return this.filteredData.asObservable();
-    }
-    
-    
-    filterdData(filterdObj:Iorder[])
-    {
-      console.log(filterdObj)
+  }
+
+  filterdData(filterdObj: Iorder[]) {
+    console.log(filterdObj)
     this.filteredData.next(filterdObj);
-    
-    }
+  }
 }

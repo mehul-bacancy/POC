@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Iorder } from 'src/app/models/order.interface';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IProduct } from 'src/app/models/product.interface';
 
 @Component({
@@ -9,8 +9,8 @@ import { IProduct } from 'src/app/models/product.interface';
   styleUrls: ['./center-modal.component.scss']
 })
 export class CenterModalComponent implements OnInit {
-  @Input() public product:IProduct;
-  @Input() public order:Iorder;
+  @Input() public product: IProduct;
+  @Input() public order: Iorder;
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {

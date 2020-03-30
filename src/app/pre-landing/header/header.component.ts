@@ -9,16 +9,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
-  navbarOpen: boolean=false;
+  navbarOpen: boolean = false;
   ngOnInit() {
   }
 
-  toogleNavbar()
-  {
-    this.navbarOpen=!this.navbarOpen
+  toogleNavbar() {
+    this.navbarOpen = !this.navbarOpen
   }
 
-  logout(){
+  logout() {
     localStorage.setItem('token', '');
     this.router.navigate(['auth/login']);
   }

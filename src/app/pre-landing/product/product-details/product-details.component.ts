@@ -18,41 +18,42 @@ export class ProductDetailsComponent implements OnInit {
 
   products: IProduct[];
   search: string = '';
-  discount:string="Yes";
+  discount: string = "Yes";
   page = 1;
   pageSize = 10;
-  suppliers=[];
-  categories=[];
-  collectionSize:number = 100;
-  content:string="addProduct";
+  suppliers = [];
+  categories = [];
+  collectionSize: number = 100;
+  content: string = "addProduct";
   searchItem: string = "";
   filteredProducts = [];
   selectedSupplier: string;
   selectedCategory: string;
-
+  isShowSpinner: boolean = true;
+ 
   constructor(
     public _ProductService: ProductService,
     private excelService: ExcelService,
     public _filterPipe: SearchFilterPipe,
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
-    private modalService:NgbModal
-    ) { }
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit() {
     this.getProducts();
-    this._ProductService.getAllData().subscribe(data=>{
-      this.suppliers=this._ProductService.getSuppliersOrCategories(data.map(data=>data['supplier']));
-      this.categories=this._ProductService.getSuppliersOrCategories(data.map(data=>data['category']))
-    }) 
+    this._ProductService.getAllData().subscribe(data => {
+      this.suppliers = this._ProductService.getSuppliersOrCategories(data.map(data => data['supplier']));
+      this.categories = this._ProductService.getSuppliersOrCategories(data.map(data => data['category']))
+    })
   }
-  
+
   getProducts() {
-    
     this._ProductService.getAllData().subscribe(data => {
       this.products = data
       this.filteredProducts = data;
-     
+      this.collectionSize = this.products.length;
+      this.isShowSpinner = false;
     })
   }
 
@@ -75,27 +76,20 @@ export class ProductDetailsComponent implements OnInit {
     console.log(this.products)
   }
 
-  open(content)
-  {
-   console.log("in product",content);
-   const modalAddRef=this.modalService.open(SideModalComponent);
-   modalAddRef.componentInstance.content=content;
+  openSideModal(content) {
+    const modalAddRef = this.modalService.open(SideModalComponent);
+    modalAddRef.componentInstance.content = content;
   }
 
-
-  opencenterModal(product:IProduct)
-  {
-
-    const modalRef=this.modalService.open(CenterModalComponent);
-    modalRef.componentInstance.product=product;
-
+  openCenterModal(product: IProduct) {
+    const modalRef = this.modalService.open(CenterModalComponent);
+    modalRef.componentInstance.product = product;
   }
- 
-  
+
   exportToExcel() {
     let fileName = 'products.csv';
     let columnNames = ["Id", "Name", "Supplier", "Category", "Price", "Discounted", "Discount"];
-    this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1)*this.pageSize, (this.page - 1)*this.pageSize + this.pageSize))
-    }
+    this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
+  }
 
 }

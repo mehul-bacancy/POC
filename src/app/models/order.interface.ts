@@ -1,4 +1,4 @@
-export interface Iorder{
+export interface Iorder {
     address: string;
     city: string;
     customerName: string;

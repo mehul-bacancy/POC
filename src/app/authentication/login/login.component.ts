@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  model= {
+  model = {
     email: '',
     password: ''
   };
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-   this._AuthenticationService.login(this.model.email, this.model.password)
+  login() {
+    this._AuthenticationService.login(this.model.email, this.model.password)
   }
 }

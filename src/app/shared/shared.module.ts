@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdvanceSearchComponent } from '../pre-landing/order/advance-search/advance-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddEditProductComponent } from '../pre-landing/product/add-edit-product/add-edit-product.component';
+import { LoadinSpinnerComponent } from '../core/loadin-spinner/loadin-spinner.component';
 
 
 
@@ -16,7 +17,7 @@ import { AddEditProductComponent } from '../pre-landing/product/add-edit-product
     AddEditOrderComponent,
     AdvanceSearchComponent,
     CenterModalComponent,
-    
+    LoadinSpinnerComponent,
     AddEditProductComponent
   ],
   imports: [
@@ -25,13 +26,13 @@ import { AddEditProductComponent } from '../pre-landing/product/add-edit-product
     ReactiveFormsModule,
     NgbModule
   ],
-  exports:[
+  exports: [
     SideModalComponent,
     AddEditOrderComponent,
     AdvanceSearchComponent,
     CenterModalComponent,
-    
-    AddEditProductComponent
-    ]
+    AddEditProductComponent,
+    LoadinSpinnerComponent
+  ]
 })
 export class SharedModule { }

@@ -7,15 +7,15 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-  model= {
+  model = {
     email: ''
   };
-  constructor(public _AuthenticationService: AuthenticationService ) { }
+  constructor(public _AuthenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  forgetPassword(){
+  forgetPassword() {
     this._AuthenticationService.forgetPassword(this.model.email);
   }
 }

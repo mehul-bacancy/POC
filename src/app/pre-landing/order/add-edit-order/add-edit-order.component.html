@@ -8,7 +8,6 @@
         Customer Name is required
     </div>
 
-
     <div class="form-group">
         <label for="Name">Address</label>
         <input type="text" class="form-control" formControlName="address">
@@ -17,7 +16,6 @@
         *ngIf="orderForm.get('address').errors?.required && orderForm.get('address').touched">
         Addresss is required
     </div>
-
 
     <div class="form-group">
         <label for="Name">City</label>
@@ -28,7 +26,6 @@
         City is required
     </div>
 
-
     <div class="form-group">
         <label for="Name">Shipper</label>
         <input type="text" class="form-control" formControlName="shipper">
@@ -37,7 +34,6 @@
         *ngIf="orderForm.get('shipper').errors?.required && orderForm.get('shipper').touched">
         Shipper is required
     </div>
-
 
     <div class="form-group">
         <label for="Name">Order Date</label>
@@ -48,16 +44,14 @@
         order Date is required
     </div>
 
-
     <div class="form-group">
         <label for="Name">OrderTotal</label>
-        <input type="text" class="form-control" formControlName="orderTotal">
+        <input type="number" class="form-control" formControlName="orderTotal">
     </div>
     <div class="alert alert-danger mt-2" role="alert"
         *ngIf="orderForm.get('orderTotal').errors?.required && orderForm.get('orderTotal').touched">
         order Total is required
     </div>
-
 
     <br>
 

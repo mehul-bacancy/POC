@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { CanActivateGuard } from '../../gaurds/can-activate.guard';
+import { CanActivateGuard } from '../../guards/can-activate.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './order.component';
@@ -13,24 +13,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdvanceSearchComponent } from './advance-search/advance-search.component';
 
 
-const routes: Routes =[
+const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: OrderComponent,
-    children:[
+    children: [
       {
-        path:'',
+        path: '',
         redirectTo: 'order-details',
         pathMatch: 'full'
       },
       {
-        path:'order-details',
+        path: 'order-details',
         component: OrderDetailsComponent,
         canActivate: [CanActivateGuard]
       },
-     
+
     ]
-  } 
+  }
 ];
 
 
@@ -38,17 +38,17 @@ const routes: Routes =[
   declarations: [
     OrderComponent,
     OrderDetailsComponent,
-    
-    ],
+
+  ],
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
     NgbModule,
-    RouterModule.forChild(routes), 
+    RouterModule.forChild(routes),
     ReactiveFormsModule
   ],
-  entryComponents:[
+  entryComponents: [
     SideModalComponent,
     AddEditOrderComponent,
     CenterModalComponent,

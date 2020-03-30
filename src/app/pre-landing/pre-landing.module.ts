@@ -4,13 +4,15 @@ import { PreLandingComponent } from './pre-landing.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { CanLoadGuard } from '../guards/can-load.guard';
+import { CanActivateGuard } from '../guards/can-activate.guard';
 
 
-const routes: Routes=[
+const routes: Routes = [
   {
     path: '',
     component: PreLandingComponent,
-    children:[
+    children: [
       {
         path: '',
         redirectTo: 'dash-board',
@@ -18,15 +20,18 @@ const routes: Routes=[
       },
       {
         path: 'dash-board',
-        component: DashBoardComponent
+        component: DashBoardComponent,
+        canActivate: [CanActivateGuard]
       },
       {
         path: 'product',
-        loadChildren: ()=>import('./product/product.module').then(product=>product.ProductModule)
+        loadChildren: () => import('./product/product.module').then(product => product.ProductModule),
+
       },
       {
         path: 'order',
-        loadChildren:()=> import('./order/order.module').then(order=>order.OrderModule)
+        loadChildren: () => import('./order/order.module').then(order => order.OrderModule),
+
       }
     ]
   }

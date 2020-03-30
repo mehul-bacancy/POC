@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class CanActivateGuard implements CanActivate {
   constructor(private router: Router) { }
-  canActivate(): boolean{
-    if(localStorage.getItem("token")) {
+  canActivate(): boolean {
+    if (localStorage.getItem("token")) {
       return true;
     } else {
       this.router.navigate(['/auth/login']);
       return false;
     }
   }
-  
+
 }

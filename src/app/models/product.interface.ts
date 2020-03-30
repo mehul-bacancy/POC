@@ -6,4 +6,4 @@ export interface IProduct {
     price: number;
     discounted: string;
     discount: number
-};
+}

@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  model= {
+  model = {
     email: '',
     password: '',
     confirmPassword: ''
@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
-  register(){
+  register() {
     this._AuthenticationService.register(this.model.email, this.model.password);
   }
 }
