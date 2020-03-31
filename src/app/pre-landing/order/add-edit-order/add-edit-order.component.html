@@ -52,7 +52,9 @@
         *ngIf="orderForm.get('orderTotal').errors?.required && orderForm.get('orderTotal').touched">
         order Total is required
     </div>
-
+    <div class="alert alert-danger mt-2" role="alert" *ngIf="orderForm.get('orderTotal').errors?.min">
+        order Total must 1 or more
+    </div>
     <br>
 
     <button type="submit" class="btn btn-success" [disabled]="!orderForm.valid">

@@ -19,7 +19,8 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     PageNotFoundComponent,
     SearchOrderPipe,
     AdvanceSearchPipe,
-  
+    
+   
   ],
   imports: [
     BrowserModule,

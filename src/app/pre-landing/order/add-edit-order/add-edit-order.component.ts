@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { Iorder } from 'src/app/models/order.interface';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Validators, FormBuilder } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
@@ -28,7 +27,7 @@ export class AddEditOrderComponent implements OnInit {
     city: ["", Validators.required],
     shipper: ["", Validators.required],
     orderDate: ["", Validators.required],
-    orderTotal: [, Validators.required]
+    orderTotal: [, [Validators.required,Validators.min(1)]]
   })
   ngOnInit() {
     this.getOrders();

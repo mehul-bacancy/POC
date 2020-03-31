@@ -18,7 +18,7 @@
           Add
         </button>
       </div>&nbsp;
-      
+
       <div class="col-xs-4 pt-3">
         <button type="submit" class="btn btn-info"  style="float:right;" (click)="openAdvanceSearchSideModal(advanceSearchContent)">
           Advance Search</button>
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <div *ngIf="isShowSpinner">
-          <app-loadin-spinner></app-loadin-spinner>
+          <app-loading-spinner></app-loading-spinner>
         </div>
         <tbody>
           <tr *ngFor="let order of orders| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ">

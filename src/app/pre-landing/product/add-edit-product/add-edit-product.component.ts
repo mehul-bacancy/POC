@@ -30,10 +30,10 @@ export class AddEditProductComponent implements OnInit {
   productForm = this.fb.group({
     name: ["", Validators.required],
     supplier: ["", Validators.required],
-    price: ["", Validators.required],
+    price: [, [Validators.required, Validators.min(1)]],
     category: ["", Validators.required],
     discounted: ["", Validators.required],
-    discount: [, Validators.required]
+    discount: [, [Validators.required,Validators.min(0)]]
   })
 
   ngOnInit() {

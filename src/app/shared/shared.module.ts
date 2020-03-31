@@ -7,9 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdvanceSearchComponent } from '../pre-landing/order/advance-search/advance-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddEditProductComponent } from '../pre-landing/product/add-edit-product/add-edit-product.component';
-import { LoadinSpinnerComponent } from '../core/loadin-spinner/loadin-spinner.component';
-
-
+import { LoadingSpinnerComponent } from '../core/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +15,7 @@ import { LoadinSpinnerComponent } from '../core/loadin-spinner/loadin-spinner.co
     AddEditOrderComponent,
     AdvanceSearchComponent,
     CenterModalComponent,
-    LoadinSpinnerComponent,
+    LoadingSpinnerComponent,
     AddEditProductComponent
   ],
   imports: [
@@ -32,7 +30,7 @@ import { LoadinSpinnerComponent } from '../core/loadin-spinner/loadin-spinner.co
     AdvanceSearchComponent,
     CenterModalComponent,
     AddEditProductComponent,
-    LoadinSpinnerComponent
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

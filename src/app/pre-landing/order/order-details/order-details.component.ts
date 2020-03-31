@@ -7,8 +7,6 @@ import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.compone
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { ExcelService } from 'src/app/services/excel.service';
 import { SearchOrderPipe } from 'src/app/pipes/search-order.pipe';
-import { AdvanceSearchPipe } from 'src/app/pipes/advance-search.pipe';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-details',

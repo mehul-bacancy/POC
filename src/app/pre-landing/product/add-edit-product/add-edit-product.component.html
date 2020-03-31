@@ -34,6 +34,9 @@
     *ngIf="productForm.get('price').errors?.required && productForm.get('price').touched">
     Price is required
   </div>
+  <div class="alert alert-danger mt-2" role="alert" *ngIf="productForm.get('price').errors?.min">
+    Price must be 1 or more
+  </div>
 
   <div class="form-group">
     <label>Discounted</label><br>
@@ -48,11 +51,14 @@
   <div *ngIf="showDiscount">
     <div class="form-group">
       <label>Discount</label>
-      <input type="text" class="form-control" formControlName="discount">
+      <input type="number" class="form-control" formControlName="discount">
     </div>
     <div class="alert alert-danger mt-2" role="alert"
       *ngIf="productForm.get('discount').errors?.required && productForm.get('discount').touched">
       Discount is required
+    </div>
+    <div class="alert alert-danger mt-2" role="alert" *ngIf="productForm.get('discount').errors?.min">
+      Discount 0 or more
     </div>
   </div>
 

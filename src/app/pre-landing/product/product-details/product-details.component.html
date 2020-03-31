@@ -56,7 +56,7 @@
           </tr>
         </thead>
         <div *ngIf="isShowSpinner">
-          <app-loadin-spinner></app-loadin-spinner>
+          <app-loading-spinner></app-loading-spinner>
         </div>
         <tbody>
           <tr *ngFor="let product of products| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ">
