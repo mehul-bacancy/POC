@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import { IProduct } from '../models/product.interface';
+import { IProduct } from '../../models/product.interface';
 
 @Pipe({
   name: 'searchFilter'

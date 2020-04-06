@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { ExcelService } from 'src/app/services/excel.service';
-import { SearchOrderPipe } from 'src/app/pipes/search-order.pipe';
+import { SearchOrderPipe } from 'src/app/core/pipes/search-order.pipe';
 
 @Component({
   selector: 'app-order-details',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { ExcelService } from 'src/app/services/excel.service';
-import { SearchFilterPipe } from 'src/app/pipes/search-filter.pipe';
+import { SearchFilterPipe } from 'src/app/core/pipes/search-filter.pipe';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

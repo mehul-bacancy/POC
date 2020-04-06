@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import { Iorder } from '../models/order.interface';
-import { IadvanceSearch } from '../models/advanceSearch.interface';
+import { Iorder } from '../../models/order.interface';
+import { IadvanceSearch } from '../../models/advanceSearch.interface';
 
 @Pipe({
   name: 'advanceSearch'

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import { Iorder } from '../models/order.interface';
+import { Iorder } from '../../models/order.interface';
 
 @Pipe({
   name: 'searchOrder'

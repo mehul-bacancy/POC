@@ -6,11 +6,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { environment } from '../environments/environment';
-import { SearchOrderPipe } from './pipes/search-order.pipe';
-import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
+import { SearchOrderPipe } from './core/pipes/search-order.pipe';
+import { AdvanceSearchPipe } from './core/pipes/advance-search.pipe';
 
 @NgModule({
   declarations: [

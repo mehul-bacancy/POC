@@ -3,7 +3,7 @@ import { Iorder } from 'src/app/models/order.interface';
 import { OrderService } from 'src/app/services/order.service';
 import { NgbDateStruct, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AdvanceSearchPipe } from 'src/app/pipes/advance-search.pipe';
+import { AdvanceSearchPipe } from 'src/app/core/pipes/advance-search.pipe';
 import { IadvanceSearch } from 'src/app/models/advanceSearch.interface';
 
 @Component({
