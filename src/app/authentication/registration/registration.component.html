@@ -1,63 +1,76 @@
 <div class="container">
     <div class="row" style="margin-top:20px">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form role="form" name="form" #regForm=ngForm (ngSubmit)="register()">
-                <fieldset>
-                    <h2>Please Register </h2>
-                    <hr class="colorgraph">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" class="form-control input-lg" email [(ngModel)]="model.email"
-                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                            #email="ngModel" required>
+            <form class="register-form form" action="" method="post" (ngSubmit)="register(form)"
+            #form="ngForm">
+            <h3 class="text-center text-info">Registration</h3>
+             <!--email-->
+            <div class="form-group">
+                <label for="EmailId" class="text-info">EmailId:</label><br>
+                <input type="text" class="form-control" name="email" id="email" #email="ngModel"
+                    [(ngModel)]="user.email"  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"  required />
+            </div>
+            <div *ngIf="!email.valid && (email.touch || email.dirty)">
+                <div *ngIf="email.errors.required" class="alert alert-danger">
+                    email is required
                     </div>
-                    <div *ngIf="email.invalid && !email.pristine">
-                        <div *ngIf="email.errors.required" class="alert alert-danger">
-                            Email is required
-                        </div>
-                        <div *ngIf="email.errors?.pattern" class="alert alert-danger">
-                            email must be valid form
-                        </div>
+                <div *ngIf="email.errors?.pattern" class="alert alert-danger">
+                    email must be valid
+                </div>
+             </div>
+            
+            <!--password-->
+            <div class="form-group">
+                <label for="password" class="text-info">Password:</label><br>
+                <input type="password" class="form-control" id="password" minlength="6"
+                    #password="ngModel" [(ngModel)]="user.password" name="password" appNoContainSpace="ngModel" required />
+            </div>
+            <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                <div *ngIf="password.errors.required" class="alert alert-danger">
+                    password is required
+                </div>
+                <div *ngIf="password.errors.minlength" class="alert alert-danger">
+                    Name must be at least 6 characters long.
+                </div>
+                <div *ngIf="password.errors.spaceNotAllowed" class="alert alert-danger">
+                    Space is not allowed
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" minlength="6" maxlength="8" class="form-control input-lg"
-                            [(ngModel)]="model.password" #pwd="ngModel" required>
+            </div>
+            <!---confirm password-->
+            <div class="form-group">
+                <label for="password" class="text-info">Confirm Password:</label><br>
+                <input type="password" class="form-control" id="confirmPassword" minlength="6"
+                    #confirmPassword="ngModel" [(ngModel)]="confirmPasswordText" name="confirmPassword"
+                    appNoContainSpace="ngModel" required />
+            </div>
+            <div *ngIf="confirmPassword.invalid &&
+                (confirmPassword.touched || confirmPassword.dirty)
+              ">
+                <div *ngIf="confirmPassword.errors.required" class="alert alert-danger">
+                    confirm password is required
+                </div>
+
+                <div *ngIf="confirmPassword.errors.minlength" class="alert alert-danger">
+                    Name must be at least 6 characters long.
+                </div>
+                <div *ngIf="confirmPassword.errors.spaceNotAllowed" class="alert alert-danger">
+                    Space is not allowed
                     </div>
-                    <div *ngIf="pwd.invalid && !pwd.pristine">
-                        <div *ngIf="pwd.errors.required" class="alert alert-danger">
-                            Password is required
-                        </div>
-                        <div *ngIf="pwd.errors.minlength" class="alert alert-danger">
-                            password length must be between 6 to 8
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:</label>
-                        <input type="password" name="confirmPassword" class="form-control input-lg"
-                            [(ngModel)]="model.confirmPassword" #confirPpwd="ngModel" required>
-                    </div>
-                    <div *ngIf="confirPpwd.touched && confirPpwd.errors?.required" class="alert alert-danger">
-                        Confirm password is required
-                    </div>
-                    <ng-container *ngIf="confirPpwd.valid">
-                        <div [hidden]="pwd.value == confirPpwd.value" class="alert alert-danger">
-                            Confirm password is mismatch
-                        </div>
-                    </ng-container>
-                    <hr class="colorgraph">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" [disabled]="!regForm.form.valid || !(pwd.value == confirPpwd.value)"
-                                class="btn btn-lg btn-success btn-block" value="Submit">
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <a href="" [routerLink]="['/auth/login']" routerLinkActive="router-link-active"
-                                class="btn btn-link pull-right">Already Registered...</a>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+            </div>
+            <ng-container *ngIf="confirmPassword.valid">
+                <div [hidden]="password.value == confirmPassword.value" class="alert alert-danger">
+                    <p>password must be same</p>
+                </div>
+            </ng-container>         
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" 
+                 [disabled]="form.invalid || (password.value != confirmPassword.value)" >Submit</button>
+            </div>
+            <div class="login-link" class="text-right">
+                 <a [routerLink]="['/auth/login']"  class="text-info">already have an accout?</a> 
+            </div>
+
+        </form>
         </div>
     </div>
 

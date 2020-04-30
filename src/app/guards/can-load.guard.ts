@@ -9,10 +9,10 @@ export class CanLoadGuard implements CanLoad {
   constructor(private router: Router) { }
 
   canLoad(): boolean {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("uid")) {
       return true;
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/auth/login']);
       return false;
     }
   }

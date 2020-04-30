@@ -15,43 +15,56 @@ export class AuthenticationService {
   constructor(
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
-    private afAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth
   ) {
-    this.userData = afAuth.authState;
+    this.userData = angularFireAuth.authState;
   }
 
-  login(email: string, password: string) {
-    this.afAuth
-      .auth.signInWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('Successfully Login');
-        this.router.navigateByUrl('/pre-landing/dash-board');
-        localStorage.setItem('token', JSON.stringify(this.afAuth.auth.currentUser.uid));
+   //registration
+   register(email, password)
+   {
+     
+    this.angularFireAuth.auth.createUserWithEmailAndPassword(
+     email, password
+    ).
+    then(()=>{
+      window.localStorage.setItem('uid',this.angularFireAuth.auth.currentUser.uid)
+      this.angularFireDatabase.object('/users/' + localStorage.getItem('uid') + '/userDetails').set({
+       email: email, password: password
       })
-      .catch(err => {
-        console.log('something is Wrong:', err.message);
-      })
-  }
+      
+     this.router.navigateByUrl('auth/login')
+     }).catch((err)=>{
+     alert(err['message'])
+     this.router.navigateByUrl('auth/register')
+    })
+   
+   }
+ 
+   //login
+   login(email, password)
+   {
+     
 
-  register(email: string, password: string) {
-    this.afAuth
-      .auth.createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('Successfully Registered', res);
-        this.router.navigateByUrl('auth/login');
-      })
-      .catch(err => {
-        console.log('Something is wrong:', err.message);
-      })
-  }
-
-  forgetPassword(email: string) {
-    this.afAuth
-      .auth.sendPasswordResetEmail(email)
-      .then(
-        () =>
-          alert("to reset password go to your Email")
-      )
-  }
-
+     this.angularFireAuth.auth.signInWithEmailAndPassword(
+       email, password
+     ).then(()=>{
+      localStorage.setItem('uid', JSON.stringify(this.angularFireAuth.auth.currentUser.uid));
+     this.router.navigate(['/pre-landing/dash-board']);
+     return true;
+     }).catch((err)=>{
+     alert(err['message'])
+   })
+   }
+ 
+   //forgetPassword
+   forgetPassword(email)
+   {
+   
+     this.angularFireAuth.auth.sendPasswordResetEmail(email).then(()=>{
+       alert("email sent")
+      this.router.navigateByUrl('/auth/login')
+ 
+     })
+   }
 }

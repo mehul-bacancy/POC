@@ -30,6 +30,13 @@ export class ProductDetailsComponent implements OnInit {
   selectedSupplier: string;
   selectedCategory: string;
   isShowSpinner: boolean = true;
+  order: string = 'decending';
+  arrow={
+    id:'down',
+    title:'down',
+    price:'down',
+    stock:'down'
+  }
  
   constructor(
     public _ProductService: ProductService,
@@ -92,4 +99,27 @@ export class ProductDetailsComponent implements OnInit {
     this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
   }
 
+  chnageDiscount(event, obj){
+  console.log(obj);
+  this._ProductService.updateProduct(obj);
+  }
+
+  sort(key){
+    console.log(key)
+    
+    if(this.order=='decending'&& this.arrow[key]=='down'){
+      this._ProductService.sortBy(key).subscribe(data=>{
+           this.products = data
+          })
+      this.order="ascending";
+      this.arrow[key]='up';
+      }
+    else{
+      this._ProductService.sortBy(key).subscribe(data=>{
+          this.products = data.reverse()
+        })
+        this.order='decending';
+        this.arrow[key]='down';
+    }
+  }
 }

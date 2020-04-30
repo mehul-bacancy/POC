@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CanLoadGuard } from '../guards/can-load.guard';
 import { CanActivateGuard } from '../guards/can-activate.guard';
-
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dash-board',
+        redirectTo: 'dashBoard',
         pathMatch: 'full'
       },
       {
@@ -43,7 +43,8 @@ const routes: Routes = [
     DashBoardComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ChartsModule
   ]
 })
 export class PreLandingModule { }

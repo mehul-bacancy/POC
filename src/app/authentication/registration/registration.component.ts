@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Iuser } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-registration',
@@ -8,17 +9,16 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  model = {
-    email: '',
-    password: '',
-    confirmPassword: ''
-  };
-  constructor(private router: Router, public _AuthenticationService: AuthenticationService) { }
+  user:Iuser={email:"",password:""}
+  
+  constructor(private _AuthenticationService :AuthenticationService ) { }
 
   ngOnInit() {
   }
 
-  register() {
-    this._AuthenticationService.register(this.model.email, this.model.password);
+  //register
+  register()
+  {
+    this._AuthenticationService .register(this.user.email, this.user.password)
   }
 }

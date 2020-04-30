@@ -19,15 +19,15 @@ const routes: Routes = [
     loadChildren: ()=> import('./pre-landing/pre-landing.module').then(pre=>pre.PreLandingModule),
     canLoad: [CanLoadGuard]
   },
-  {
-    path: 'page-not-found',
-    component: PageNotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'page-not-found',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: 'page-not-found',
+  //   component: PageNotFoundComponent
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'page-not-found',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

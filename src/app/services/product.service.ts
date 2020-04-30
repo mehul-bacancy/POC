@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList, } from '@angular/fire/database';
 import { Observable, from, BehaviorSubject } from 'rxjs';
 import { IProduct } from '../models/product.interface';
-import * as firebase from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +16,7 @@ export class ProductService {
   constructor(
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth) {
-    this.productsRef = this.afDatabase.list('/products');
+    // this.productsRef = this.afDatabase.list('/products');
   }
 
   getData(start: number, end: number): Observable<IProduct[]> {
@@ -50,5 +50,11 @@ export class ProductService {
       }
     })
     return property
+  }
+
+  sortBy(key): Observable<IProduct[]>{
+   console.log('service',key)
+   return this.afDatabase.list<IProduct>('/products', ref=>ref.orderByChild(key)).valueChanges();
+  
   }
 }

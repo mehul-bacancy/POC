@@ -46,12 +46,13 @@
         <thead>
           <tr>
             <th scope="col">Product Id</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Supplier</th>
-            <th scope="col">Category</th>
-            <th scope="col">Price</th>
+            <th scope="col">Product Name: <i [ngClass]="arrow.title" class="a" (click)="sort('name')"></i></th>
+            <th scope="col">Supplier: <i [ngClass]="arrow.title" class="a" (click)="sort('supplier')"></i></th>
+            <th scope="col">Category: <i [ngClass]="arrow.title" class="a" (click)="sort('category')"></i></th>
+            <th scope="col">Price: <i [ngClass]="arrow.title" class="a" (click)="sort('price')"></i></th>
             <th scope="col">Discounted</th>
             <th scope="col">Discount</th>
+            <th scope="col">Discounted Price</th>
             <th scope="col">More</th>
           </tr>
         </thead>
@@ -67,10 +68,24 @@
             <td>{{product.price}}</td>
             <td>{{product.discounted}}</td>
             <ng-container *ngIf="product.discounted==discount;else elseBlock">
-              <td>
+              <!-- <td>
                 <input type="number" class="form-control" name="discount" id="discount" #discountinput="ngModel"
                   [(ngModel)]="product.discount" required />
                 <div *ngIf="discountinput.invalid && (discountinput.touched || discountinput.dirty)">
+                  <div *ngIf="discountinput.errors?.required" class="alert alert-danger">
+                    Field is Required
+                  </div>
+                </div>
+              </td> -->
+              <td>
+          
+                <input type="number" class="form-control" id="discount" [(ngModel)]="product.discount"
+                (input)="chnageDiscount($event,product)" #discountinput="ngModel"  min="0" max="50" required>
+                
+                <label *ngIf="product.discount >= 0 && product.discount <= 15" style="background-color: red;">Low</label>
+                <label *ngIf="product.discount > 15 && product.discount <= 30" style="background-color: yellow;">Average</label>
+                <label *ngIf="product.discount > 30" style="background-color: green;">High</label>
+                <div *ngIf="discountinput.invalid">
                   <div *ngIf="discountinput.errors?.required" class="alert alert-danger">
                     Field is Required
                   </div>
@@ -80,6 +95,8 @@
             <ng-template #elseBlock>
               <td>--</td>
             </ng-template>
+            
+            <td>{{(product.price * (100-product.discount))/100}}</td>
             <td>
               <button type="button" class="btn btn-primary" (click)="openCenterModal(product)">
                 edit

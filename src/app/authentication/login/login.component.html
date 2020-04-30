@@ -1,55 +1,52 @@
 <div class="container">
     <div class="row" style="margin-top:20px">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form role="form" #loginForm="ngForm" (ngSubmit)="login()">
-                <fieldset>
-                    <h2>Please Login</h2>
-                    <hr class="colorgraph">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" class="form-control input-lg" [(ngModel)]="model.email"
-                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                            #email="ngModel" email required>
+            <form class="login-form  form"  #form="ngForm" (ngSubmit)="login(form)">
+                <h3 class="text-center text-info">Login</h3>
+                <!--email-->
+                <div class="form-group">
+                    <label for="username" class="text-info">Email:</label><br>
+                    <input type="text" class="form-control" name="email" id="email" #email="ngModel"
+                    [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"    required />
+                </div>
+                <div *ngIf="!email.valid && (email.touch || email.dirty)">
+                    <div *ngIf="email.errors.required" class="alert alert-danger">
+                        Email is required
+                        
                     </div>
-                    <div *ngIf="email.invalid && !email.pristine">
-                        <div *ngIf="email.errors.required" class="alert alert-danger">
-                            Email is required
-                        </div>
-                        <div *ngIf="email.errors?.pattern" class="alert alert-danger">
-                            email must be valid form
-                        </div>
+                    <div *ngIf="email.errors?.pattern" class="alert alert-danger">
+                        Email must be valid
+                     </div>
+                 </div>
+                 <!--password-->
+                <div class="form-group">
+                    <label for="password" class="text-info">Password:</label><br>
+                    <input type="password" class="form-control" id="password" minlength="6"
+                            #password="ngModel" [(ngModel)]="user.password" name="password"  appNoContainSpace="ngModel"  required />
+                 </div>
+                <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                    <div *ngIf="password.errors.required" class="alert alert-danger">
+                        password is required
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" class="form-control input-lg"
-                            [(ngModel)]="model.password" #pwd="ngModel" minlength="6" maxlength="8" required>
+                    <div *ngIf="password.errors.minlength" class="alert alert-danger">
+                        Name must be at least 6 characters long.
                     </div>
-                    <div *ngIf="pwd.invalid && !pwd.pristine">
-                        <div *ngIf="pwd.errors.required" class="alert alert-danger">
-                            Password is required
-                        </div>
-                        <div *ngIf="pwd.errors.minlength" class="alert alert-danger">
-                            password length must be between 6 to 8
-                        </div>
+                    <div *ngIf="password.errors.spaceNotAllowed" class="alert alert-danger">
+                    Space is not allowed
                     </div>
-                    <div style="float: right;">
-                        <a href="" [routerLink]="['/auth/forgetPassword']" routerLinkActive="router-link-active"
-                            class="btn btn-link pull-right">Forget Password...</a>
-                    </div>
-                    <br>
-                    <hr class="colorgraph">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" [disabled]="loginForm.invalid" class="btn btn-lg btn-success btn-block"
-                                value="Login">
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <a href="" [routerLink]="['/auth/register']" routerLinkActive="router-link-active"
-                                class="btn btn-link pull-right" style="float: right; padding-top: 10px;">Register
-                                Here...</a>
-                        </div>
-                    </div>
-                </fieldset>
+                </div>
+                <div class="form-group">
+                    <button type="submit" [disabled]="form.invalid" name="submit" class="btn btn-info btn-md" value="Login">Login</button>
+                </div>
+                
+                <div class="register-link text-right">
+                    <a [routerLink]="['/auth/forget-password']" class="text-info">Forget Password?</a>
+                </div>
+                <br>
+                <br> 
+                <div class="register-link text-right">
+                    <a [routerLink]="['/auth/register']" class="text-info">Register here</a>
+                </div>
             </form>
         </div>
     </div>
