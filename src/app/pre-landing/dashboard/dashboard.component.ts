@@ -3,11 +3,12 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, SingleDataSet, Color } from 'ng2-charts';
 
 @Component({
-  selector: 'app-dash-board',
-  templateUrl: './dash-board.component.html',
-  styleUrls: ['./dash-board.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashBoardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
 
   constructor() { }
 

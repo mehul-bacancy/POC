@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
 import { SearchOrderPipe } from './core/pipes/search-order.pipe';
 import { AdvanceSearchPipe } from './core/pipes/advance-search.pipe';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AdvanceSearchPipe } from './core/pipes/advance-search.pipe';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

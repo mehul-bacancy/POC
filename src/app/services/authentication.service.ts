@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-
+import { Location } from '@angular/common'
 
 @Injectable({
   providedIn: "root"
@@ -15,7 +15,8 @@ export class AuthenticationService {
   constructor(
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
-    private angularFireAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth,
+    private location: Location
   ) {
     this.userData = angularFireAuth.authState;
   }
@@ -28,15 +29,15 @@ export class AuthenticationService {
      email, password
     ).
     then(()=>{
-      window.localStorage.setItem('uid',this.angularFireAuth.auth.currentUser.uid)
+      // window.localStorage.setItem('uid',this.angularFireAuth.auth.currentUser.uid)
       this.angularFireDatabase.object('/users/' + localStorage.getItem('uid') + '/userDetails').set({
        email: email, password: password
       })
       
-     this.router.navigateByUrl('auth/login')
+     this.router.navigateByUrl('/auth/login')
      }).catch((err)=>{
      alert(err['message'])
-     this.router.navigateByUrl('auth/register')
+     this.router.navigateByUrl('/auth/register')
     })
    
    }
@@ -50,7 +51,10 @@ export class AuthenticationService {
        email, password
      ).then(()=>{
       localStorage.setItem('uid', JSON.stringify(this.angularFireAuth.auth.currentUser.uid));
-     this.router.navigate(['/pre-landing/dash-board']);
+    //  this.router.navigateByUrl('/pre-landing/dash-board', {skipLocationChange:true}).then(()=>{ 
+    //    this.router.navigate(['/pre-landing/dash-board'])
+    //  })
+    this.router.navigate(['/pre-landing/dashboard'])
      return true;
      }).catch((err)=>{
      alert(err['message'])

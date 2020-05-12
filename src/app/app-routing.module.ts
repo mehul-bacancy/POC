@@ -7,7 +7,7 @@ import { CanLoadGuard } from './guards/can-load.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/auth/login',
+    redirectTo: 'auth/login',
     pathMatch: 'full'
   },
   { 
@@ -19,20 +19,20 @@ const routes: Routes = [
     loadChildren: ()=> import('./pre-landing/pre-landing.module').then(pre=>pre.PreLandingModule),
     canLoad: [CanLoadGuard]
   },
-  // {
-  //   path: 'page-not-found',
-  //   component: PageNotFoundComponent
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'page-not-found',
-  //   pathMatch: 'full'
-  // }
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'page-not-found',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
   
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

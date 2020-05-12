@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { IProduct } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -15,8 +15,10 @@ import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.c
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+  @HostListener('click')
+  wasInside: boolean = false;
   products: IProduct[];
+  obj: IProduct;
   search: string = '';
   discount: string = "Yes";
   page = 1;
@@ -101,7 +103,23 @@ export class ProductDetailsComponent implements OnInit {
 
   chnageDiscount(event, obj){
   console.log(obj);
-  this._ProductService.updateProduct(obj);
+  this.obj = obj;
+  this.wasInside = true;
+  // this._ProductService.updateProduct(obj);
+  }
+
+ 
+  // clickInside() {
+  //   this.wasInside = true;
+  // }
+  
+  @HostListener('document:click')
+  clickout() {
+    if (this.wasInside) {
+      console.log(this.obj)
+      this._ProductService.updateProduct(this.obj);
+    }
+    
   }
 
   sort(key){

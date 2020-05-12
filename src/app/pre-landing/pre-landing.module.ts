@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PreLandingComponent } from './pre-landing.component';
-import { DashBoardComponent } from './dash-board/dash-board.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CanLoadGuard } from '../guards/can-load.guard';
 import { CanActivateGuard } from '../guards/can-activate.guard';
 import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -15,12 +15,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashBoard',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {
-        path: 'dash-board',
-        component: DashBoardComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
         canActivate: [CanActivateGuard]
       },
       {
@@ -38,9 +38,11 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [PreLandingComponent,
+  declarations: [
+    PreLandingComponent,
     HeaderComponent,
-    DashBoardComponent],
+    DashboardComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

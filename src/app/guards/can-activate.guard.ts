@@ -11,7 +11,10 @@ export class CanActivateGuard implements CanActivate {
     if (localStorage.getItem("uid")) {
       return true;
     } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/login'])
+      // this.router.navigateByUrl('/auth/login', {skipLocationChange:true}).then(()=>{
+      //   this.router.navigate(['/auth/login'])
+      // })
       return false;
     }
   }

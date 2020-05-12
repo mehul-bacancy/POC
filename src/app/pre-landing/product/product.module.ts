@@ -12,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
+import { InputBorderColorDirective } from 'src/app/core/directives/input-border-color.directive';
 
 const routes: Routes = [
   {
@@ -37,10 +38,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductDetailsComponent
-
-
-
+    ProductDetailsComponent,
+    InputBorderColorDirective
   ],
   imports: [
     CommonModule,
@@ -50,7 +49,7 @@ const routes: Routes = [
     NgxPaginationModule,
     ReactiveFormsModule,
     SharedModule,
-    NgbModule,
+    NgbModule
   ],
   entryComponents: [
     SideModalComponent,

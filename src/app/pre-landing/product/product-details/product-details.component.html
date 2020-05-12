@@ -2,7 +2,7 @@
   <div class="container">
     <h2><b>Products</b></h2>
     <div class="row">
-      <div class="col-xs-4 pt-3" style="margin-top:5px" >
+      <div class="col-xs-4 pt-3" style="margin-top:5px">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -46,10 +46,10 @@
         <thead>
           <tr>
             <th scope="col">Product Id</th>
-            <th scope="col">Product Name: <i [ngClass]="arrow.title" class="a" (click)="sort('name')"></i></th>
-            <th scope="col">Supplier: <i [ngClass]="arrow.title" class="a" (click)="sort('supplier')"></i></th>
-            <th scope="col">Category: <i [ngClass]="arrow.title" class="a" (click)="sort('category')"></i></th>
-            <th scope="col">Price: <i [ngClass]="arrow.title" class="a" (click)="sort('price')"></i></th>
+            <th scope="col">Product Name: <i [ngClass]="arrow.title" class="arrow" (click)="sort('name')"></i></th>
+            <th scope="col">Supplier: <i [ngClass]="arrow.title" class="arrow" (click)="sort('supplier')"></i></th>
+            <th scope="col">Category: <i [ngClass]="arrow.title" class="arrow" (click)="sort('category')"></i></th>
+            <th scope="col">Price: <i [ngClass]="arrow.title" class="arrow" (click)="sort('price')"></i></th>
             <th scope="col">Discounted</th>
             <th scope="col">Discount</th>
             <th scope="col">Discounted Price</th>
@@ -67,7 +67,7 @@
             <td>{{product.category}}</td>
             <td>{{product.price}}</td>
             <td>{{product.discounted}}</td>
-            <ng-container *ngIf="product.discounted==discount;else elseBlock">
+            <ng-container *ngIf="product.discounted==discount; else elseBlock">
               <!-- <td>
                 <input type="number" class="form-control" name="discount" id="discount" #discountinput="ngModel"
                   [(ngModel)]="product.discount" required />
@@ -78,16 +78,16 @@
                 </div>
               </td> -->
               <td>
-          
-                <input type="number" class="form-control" id="discount" [(ngModel)]="product.discount"
-                (input)="chnageDiscount($event,product)" #discountinput="ngModel"  min="0" max="50" required>
-                
-                <label *ngIf="product.discount >= 0 && product.discount <= 15" style="background-color: red;">Low</label>
-                <label *ngIf="product.discount > 15 && product.discount <= 30" style="background-color: yellow;">Average</label>
-                <label *ngIf="product.discount > 30" style="background-color: green;">High</label>
+
+                <input type="text" class="form-control" pattern="^([1-9]|[1-4][0-9]|50)$" id="discount"
+                  [(ngModel)]="product.discount" (input)="chnageDiscount($event,product)" #discountinput="ngModel"
+                  [appInputBorderColor]="product.discount" size="6"required>
                 <div *ngIf="discountinput.invalid">
                   <div *ngIf="discountinput.errors?.required" class="alert alert-danger">
                     Field is Required
+                  </div>
+                  <div *ngIf="discountinput.errors?.pattern" class="alert alert-danger">
+                    Discount must be between 1 to 50
                   </div>
                 </div>
               </td>
@@ -95,7 +95,7 @@
             <ng-template #elseBlock>
               <td>--</td>
             </ng-template>
-            
+
             <td>{{(product.price * (100-product.discount))/100}}</td>
             <td>
               <button type="button" class="btn btn-primary" (click)="openCenterModal(product)">
