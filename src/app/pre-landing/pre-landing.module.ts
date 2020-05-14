@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { PreLandingComponent } from './pre-landing.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { CanLoadGuard } from '../guards/can-load.guard';
-import { CanActivateGuard } from '../guards/can-activate.guard';
 import { ChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProtectGuard } from '../guards/protect.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +20,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [CanActivateGuard]
+        canActivate: [ProtectGuard]
       },
       {
         path: 'product',

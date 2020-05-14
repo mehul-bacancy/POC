@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { CanActivateGuard } from '../../guards/can-activate.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './order.component';
@@ -11,6 +10,7 @@ import { AddEditOrderComponent } from './add-edit-order/add-edit-order.component
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdvanceSearchComponent } from './advance-search/advance-search.component';
+import { ProtectGuard } from 'src/app/guards/protect.guard';
 
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
       {
         path: 'order-details',
         component: OrderDetailsComponent,
-        canActivate: [CanActivateGuard]
+        canActivate: [ProtectGuard]
       },
 
     ]

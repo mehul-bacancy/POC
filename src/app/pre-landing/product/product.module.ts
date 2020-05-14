@@ -4,7 +4,6 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product.component';
 import { Routes, RouterModule } from '@angular/router';
-import { CanActivateGuard } from 'src/app/guards/can-activate.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination'
@@ -13,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SideModalComponent } from 'src/app/modals/side-modal/side-modal.component';
 import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.component';
 import { InputBorderColorDirective } from 'src/app/core/directives/input-border-color.directive';
+import { ProtectGuard } from 'src/app/guards/protect.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
       {
         path: 'product-details',
         component: ProductDetailsComponent,
-        canActivate: [CanActivateGuard]
+        canActivate: [ProtectGuard]
 
       },
 

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CanActivateGuard implements CanActivate {
+export class ProtectGuard implements CanActivate {
   constructor(private router: Router) { }
   canActivate(): boolean {
     if (localStorage.getItem("uid")) {
@@ -15,5 +15,4 @@ export class CanActivateGuard implements CanActivate {
       return false;
     }
   }
-
 }

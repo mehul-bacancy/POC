@@ -24,6 +24,13 @@ export class OrderDetailsComponent implements OnInit {
   filteredOrders: Iorder[] = [];
   advanceSearchContent: string = "advanceSearch";
   isShowSpinner: boolean = true;
+  order: string = 'decending';
+  arrow = {
+    id: 'down',
+    title: 'down',
+    price: 'down',
+    stock: 'down'
+  }
 
   constructor(private _orderService: OrderService,
     private _orderFilter: SearchOrderPipe,
@@ -75,4 +82,21 @@ export class OrderDetailsComponent implements OnInit {
     this._excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
   }
 
+  sort(key) {
+
+    if (this.order == 'decending' && this.arrow[key] == 'down') {
+      this._orderService.sortBy(key).subscribe(data => {
+        this.orders = data
+      })
+      this.order = "ascending";
+      this.arrow[key] = 'up';
+    }
+    else {
+      this._orderService.sortBy(key).subscribe(data => {
+        this.orders = data.reverse()
+      })
+      this.order = 'decending';
+      this.arrow[key] = 'down';
+    }
+  }
 }
