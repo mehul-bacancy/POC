@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { IProduct } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { ExcelService } from 'src/app/services/excel.service';
-import { SearchFilterPipe } from 'src/app/core/pipes/search-filter.pipe';
+import { SearchProductPipe } from 'src/app/core/pipes/search-product.pipe';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,10 +15,8 @@ import { CenterModalComponent } from 'src/app/modals/center-modal/center-modal.c
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  @HostListener('click')
-  wasInside: boolean = false;
+
   products: IProduct[];
-  obj: IProduct;
   search: string = '';
   discount: string = "Yes";
   page = 1;
@@ -33,17 +31,17 @@ export class ProductDetailsComponent implements OnInit {
   selectedCategory: string;
   isShowSpinner: boolean = true;
   order: string = 'decending';
-  arrow={
-    id:'down',
-    title:'down',
-    price:'down',
-    stock:'down'
+  arrow = {
+    id: 'down',
+    title: 'down',
+    price: 'down',
+    stock: 'down'
   }
- 
+
   constructor(
-    public _ProductService: ProductService,
+    public productService: ProductService,
     private excelService: ExcelService,
-    public _filterPipe: SearchFilterPipe,
+    public searchProductFilter: SearchProductPipe,
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
     private modalService: NgbModal
@@ -51,14 +49,14 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    this._ProductService.getAllData().subscribe(data => {
-      this.suppliers = this._ProductService.getSuppliersOrCategories(data.map(data => data['supplier']));
-      this.categories = this._ProductService.getSuppliersOrCategories(data.map(data => data['category']))
+    this.productService.getAllData().subscribe(data => {
+      this.suppliers = this.productService.getSuppliersOrCategories(data.map(data => data['supplier']));
+      this.categories = this.productService.getSuppliersOrCategories(data.map(data => data['category']))
     })
   }
 
   getProducts() {
-    this._ProductService.getAllData().subscribe(data => {
+    this.productService.getAllData().subscribe(data => {
       this.products = data
       this.filteredProducts = data;
       this.collectionSize = this.products.length;
@@ -80,7 +78,7 @@ export class ProductDetailsComponent implements OnInit {
         this.selectedCategory = '';
       }
     }
-    this.products = this._filterPipe.transform(this.filteredProducts, this.searchItem, this.selectedSupplier, this.selectedCategory);
+    this.products = this.searchProductFilter.transform(this.filteredProducts, this.searchItem, this.selectedSupplier, this.selectedCategory);
     this.collectionSize = this.products.length
     console.log(this.products)
   }
@@ -101,43 +99,26 @@ export class ProductDetailsComponent implements OnInit {
     this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
   }
 
-  chnageDiscount(event, obj){
-  console.log(obj);
-  this.obj = obj;
-  this.wasInside = true;
-  // this._ProductService.updateProduct(obj);
+  chnageDiscount(event, obj) {
+    this.productService.updateProduct(obj);
   }
 
- 
-  // clickInside() {
-  //   this.wasInside = true;
-  // }
-  
-  @HostListener('document:click')
-  clickout() {
-    if (this.wasInside) {
-      console.log(this.obj)
-      this._ProductService.updateProduct(this.obj);
-    }
-    
-  }
-
-  sort(key){
+  sort(key) {
     console.log(key)
-    
-    if(this.order=='decending'&& this.arrow[key]=='down'){
-      this._ProductService.sortBy(key).subscribe(data=>{
-           this.products = data
-          })
-      this.order="ascending";
-      this.arrow[key]='up';
-      }
-    else{
-      this._ProductService.sortBy(key).subscribe(data=>{
-          this.products = data.reverse()
-        })
-        this.order='decending';
-        this.arrow[key]='down';
+
+    if (this.order == 'decending' && this.arrow[key] == 'down') {
+      this.productService.sortBy(key).subscribe(data => {
+        this.products = data
+      })
+      this.order = "ascending";
+      this.arrow[key] = 'up';
+    }
+    else {
+      this.productService.sortBy(key).subscribe(data => {
+        this.products = data.reverse()
+      })
+      this.order = 'decending';
+      this.arrow[key] = 'down';
     }
   }
 }

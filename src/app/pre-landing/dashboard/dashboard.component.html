@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats my-card">
                     <div class="card-body">
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
                                     <i class="fa fa-users fa-4x" style="color: blue;"></i>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats my-card">
                     <div class="card-body ">
@@ -117,10 +117,8 @@
                         <p class="card-category">Number of orders Placed</p>
                     </div>
                     <div class="card-body">
-                        <canvas baseChart 
-                        height="100"
-                        width="100"
-                        [data]="pieChartData" [chartType]="pieChartType" [colors]="barChartColors" [labels]="pieChartLabels" [options]="pieChartOptions"
+                        <canvas baseChart height="100" width="100" [data]="pieChartData" [chartType]="pieChartType"
+                            [colors]="barChartColors" [labels]="pieChartLabels" [options]="pieChartOptions"
                             [plugins]="pieChartPlugins" [legend]="pieChartLegend">
                         </canvas>
                     </div>
@@ -133,13 +131,9 @@
                         <p class="card-category">Number of products</p>
                     </div>
                     <div class="card-body">
-                        <canvas 
-                        baseChart 
-                        height="45"
-                        width="100"
-                        [datasets]="barChartData" [labels]="barChartLabels" [colors]="barChartColors"
-                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                            [chartType]="barChartType">
+                        <canvas baseChart height="45" width="100" [datasets]="barChartData" [labels]="barChartLabels"
+                            [colors]="barChartColors" [options]="barChartOptions" [plugins]="barChartPlugins"
+                            [legend]="barChartLegend" [chartType]="barChartType">
                         </canvas>
                     </div>
                 </div>

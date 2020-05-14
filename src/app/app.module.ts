@@ -8,15 +8,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { environment } from '../environments/environment';
-import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
+import { SearchProductPipe } from './core/pipes/search-product.pipe';
 import { SearchOrderPipe } from './core/pipes/search-order.pipe';
 import { AdvanceSearchPipe } from './core/pipes/advance-search.pipe';
-import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchFilterPipe,
+    SearchProductPipe,
     PageNotFoundComponent,
     SearchOrderPipe,
     AdvanceSearchPipe,
@@ -32,7 +31,7 @@ import { APP_BASE_HREF } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

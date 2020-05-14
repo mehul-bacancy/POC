@@ -9,16 +9,14 @@ import { Iuser } from 'src/app/models/user.interface';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user:Iuser={email:"",password:""}
-  constructor(private _AuthenticationService: AuthenticationService ) { }
+  user: Iuser = { email: "", password: "" }
+  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   //login
-  login()
-  {
-    // console.log(this.user.email, this.user.password)
-    this._AuthenticationService.login(this.user.email, this.user.password);
-    
+  login() {
+    this.authenticationService.login(this.user.email, this.user.password);
+
   }
 }

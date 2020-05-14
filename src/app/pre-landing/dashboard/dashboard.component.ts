@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   // public barChartColors: Color[] = [
   //   { backgroundColor: ['red','yellow','green','blue','pink'] },
-   
+
   // ]
 
   ngOnInit() {

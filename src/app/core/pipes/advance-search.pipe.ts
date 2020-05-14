@@ -152,7 +152,7 @@ export class AdvanceSearchPipe implements PipeTransform {
       if ((selectedFields.selectedShippers && selectedFields.selectedCustomerNames && selectedFields.selectedFromDate && selectedFields.selectedToDate && selectedFields.selectedToAmount) &&
         (selectedFields.selectedFromAmount == null)) {
         {
-            return (selectedFields.selectedShippers.indexOf(item['shipper']) > -1) &&
+          return (selectedFields.selectedShippers.indexOf(item['shipper']) > -1) &&
             (selectedFields.selectedCustomerNames.indexOf(item['customerName']) > -1)
             && (item['orderDate'] >= selectedFields.selectedFromDate)
             && (item['orderDate'] <= selectedFields.selectedToDate)
@@ -161,8 +161,7 @@ export class AdvanceSearchPipe implements PipeTransform {
       }
 
       //six fileds
-      if (selectedFields.selectedShippers && selectedFields.selectedCustomerNames && selectedFields.selectedFromDate && selectedFields.selectedToDate && selectedFields.selectedToAmount && selectedFields.selectedFromAmount)
-       {
+      if (selectedFields.selectedShippers && selectedFields.selectedCustomerNames && selectedFields.selectedFromDate && selectedFields.selectedToDate && selectedFields.selectedToAmount && selectedFields.selectedFromAmount) {
         return (selectedFields.selectedShippers.indexOf(item['shipper']) > -1) &&
           (selectedFields.selectedCustomerNames.indexOf(item['customerName']) > -1)
           && (item['orderDate'] >= selectedFields.selectedFromDate)
@@ -304,29 +303,25 @@ export class AdvanceSearchPipe implements PipeTransform {
 
       //orderToDate && orderFromAmount 
       if ((selectedFields.selectedToDate && selectedFields.selectedFromAmount) &&
-        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null && selectedFields.selectedToAmount == null))
-         {
+        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null && selectedFields.selectedToAmount == null)) {
         return (item['orderDate'] <= selectedFields.selectedToDate) && (item['orderTotal'] >= selectedFields.selectedFromAmount)
       }
 
       //orderToDate && orderToAmount 
       if ((selectedFields.selectedToDate && selectedFields.selectedToAmount) &&
-        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null && selectedFields.selectedFromAmount == null)) 
-        {
+        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null && selectedFields.selectedFromAmount == null)) {
         return (item['orderDate'] <= selectedFields.selectedToDate) && (item['orderTotal'] <= selectedFields.selectedToAmount)
       }
 
       //orderToDate && orderFromAmount  && orderToAmount
       if ((selectedFields.selectedToDate && selectedFields.selectedFromAmount && selectedFields.selectedToAmount) &&
-        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null)) 
-        {
+        (selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null)) {
         return (item['orderDate'] <= selectedFields.selectedToDate) && (item['orderTotal'] >= selectedFields.selectedFromAmount) && (item['orderTotal'] <= selectedFields.selectedToAmount)
       }
 
       // orderFromAmount  && orderToAmount
       if ((selectedFields.selectedFromAmount && selectedFields.selectedToAmount) &&
-        (selectedFields.selectedToDate == null && selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null)) 
-        {
+        (selectedFields.selectedToDate == null && selectedFields.selectedShippers == null && selectedFields.selectedCustomerNames == null && selectedFields.selectedFromDate == null)) {
         return (item['orderTotal'] >= selectedFields.selectedFromAmount) && (item['orderTotal'] <= selectedFields.selectedToAmount)
       }
     })

@@ -9,16 +9,15 @@ import { Iuser } from 'src/app/models/user.interface';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  user:Iuser={email:"",password:""}
-  
-  constructor(private _AuthenticationService :AuthenticationService ) { }
+  user: Iuser = { email: "", password: "" }
+
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   //register
-  register()
-  {
-    this._AuthenticationService .register(this.user.email, this.user.password)
+  register() {
+    this.authenticationService.register(this.user.email, this.user.password)
   }
 }

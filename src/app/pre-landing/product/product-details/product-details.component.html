@@ -46,10 +46,10 @@
         <thead>
           <tr>
             <th scope="col">Product Id</th>
-            <th scope="col">Product Name: <i [ngClass]="arrow.title" class="arrow" (click)="sort('name')"></i></th>
-            <th scope="col">Supplier: <i [ngClass]="arrow.title" class="arrow" (click)="sort('supplier')"></i></th>
-            <th scope="col">Category: <i [ngClass]="arrow.title" class="arrow" (click)="sort('category')"></i></th>
-            <th scope="col">Price: <i [ngClass]="arrow.title" class="arrow" (click)="sort('price')"></i></th>
+            <th scope="col">Product Name: <i [ngClass]="arrow.name" class="arrow" (click)="sort('name')"></i></th>
+            <th scope="col">Supplier: <i [ngClass]="arrow.supplier" class="arrow" (click)="sort('supplier')"></i></th>
+            <th scope="col">Category: <i [ngClass]="arrow.category" class="arrow" (click)="sort('category')"></i></th>
+            <th scope="col">Price: <i [ngClass]="arrow.price" class="arrow" (click)="sort('price')"></i></th>
             <th scope="col">Discounted</th>
             <th scope="col">Discount</th>
             <th scope="col">Discounted Price</th>
@@ -68,20 +68,10 @@
             <td>{{product.price}}</td>
             <td>{{product.discounted}}</td>
             <ng-container *ngIf="product.discounted==discount; else elseBlock">
-              <!-- <td>
-                <input type="number" class="form-control" name="discount" id="discount" #discountinput="ngModel"
-                  [(ngModel)]="product.discount" required />
-                <div *ngIf="discountinput.invalid && (discountinput.touched || discountinput.dirty)">
-                  <div *ngIf="discountinput.errors?.required" class="alert alert-danger">
-                    Field is Required
-                  </div>
-                </div>
-              </td> -->
               <td>
-
                 <input type="text" class="form-control" pattern="^([1-9]|[1-4][0-9]|50)$" id="discount"
-                  [(ngModel)]="product.discount" (input)="chnageDiscount($event,product)" #discountinput="ngModel"
-                  [appInputBorderColor]="product.discount" size="6"required>
+                  [(ngModel)]="product.discount" (mouseleave)="chnageDiscount($event,product)" #discountinput="ngModel"
+                  [appInputBorderColor]="product.discount" size="6" required>
                 <div *ngIf="discountinput.invalid">
                   <div *ngIf="discountinput.errors?.required" class="alert alert-danger">
                     Field is Required

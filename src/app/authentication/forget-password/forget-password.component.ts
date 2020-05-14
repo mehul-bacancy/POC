@@ -9,13 +9,13 @@ import { Iuser } from 'src/app/models/user.interface';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-  user:Iuser={email:""}
-  constructor(public _AuthenticationService: AuthenticationService) { }
+  user: Iuser = { email: "" }
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   forgetPassword() {
-    this._AuthenticationService.forgetPassword(this.user.email);
+    this.authenticationService.forgetPassword(this.user.email);
   }
 }
