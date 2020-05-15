@@ -15,7 +15,7 @@ export class AddEditOrderComponent implements OnInit {
   orderLength: number;
   @Input() public editOrder: Iorder;
 
-  constructor(private _orderService: OrderService,
+  constructor(private _OrderService: OrderService,
     private activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private angularFireDatabase: AngularFireDatabase) { }
@@ -47,7 +47,7 @@ export class AddEditOrderComponent implements OnInit {
   }
 
   getOrders() {
-    this._orderService.getOrdersData().subscribe(data => {
+    this._OrderService.getOrdersData().subscribe(data => {
       this.orderLength = data.length
     })
   }
@@ -66,7 +66,7 @@ export class AddEditOrderComponent implements OnInit {
         orderDate: this.orderForm.controls['orderDate'].value,
         orderTotal: this.orderForm.controls['orderTotal'].value,
       }
-      this._orderService.updateOrder(data);
+      this._OrderService.updateOrder(data);
       this.activeModal.close();
     }
 
@@ -83,7 +83,7 @@ export class AddEditOrderComponent implements OnInit {
           orderDate: this.orderForm.controls['orderDate'].value,
           orderTotal: this.orderForm.controls['orderTotal'].value,
         }
-        this._orderService.addOrder(this.data);
+        this._OrderService.addOrder(this.data);
         sub.unsubscribe();
         this.activeModal.close();
       });

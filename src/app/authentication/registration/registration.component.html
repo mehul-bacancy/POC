@@ -5,7 +5,7 @@
                 <h3 class="text-center text-info">Registration</h3>
                 <!--email-->
                 <div class="form-group">
-                    <label for="EmailId" class="text-info">EmailId:</label><br>
+                    <label for="EmailId" class="text-info">Email:</label><br>
                     <input type="text" class="form-control" name="email" id="email" #email="ngModel"
                         [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                         required />
@@ -63,10 +63,10 @@
                     </div>
                 </ng-container>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success"
+                    <button type="submit" class="btn btn-info btn-md"
                         [disabled]="form.invalid || (password.value != confirmPassword.value)">Submit</button>
                 </div>
-                <div class="login-link" class="text-right">
+                <div class="text-right">
                     <a [routerLink]="['/auth/login']" class="text-info">already have an accout?</a>
                 </div>
 

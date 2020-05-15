@@ -32,22 +32,22 @@ export class OrderDetailsComponent implements OnInit {
     stock: 'down'
   }
 
-  constructor(private _orderService: OrderService,
-    private _orderFilter: SearchOrderPipe,
+  constructor(private _OrderService: OrderService,
+    private orderFilter: SearchOrderPipe,
     private modalService: NgbModal,
-    private _excelService: ExcelService
+    private _ExcelService: ExcelService
   ) { }
 
   ngOnInit() {
     this.getAllOrderData();
-    this._orderService.getFilteredObs().subscribe(filterData => {
+    this._OrderService.getFilteredObs().subscribe(filterData => {
       this.orders = filterData;
       this.collectionSize = this.orders.length;
     });
   }
 
   getAllOrderData() {
-    this._orderService.getOrdersData().subscribe(data => {
+    this._OrderService.getOrdersData().subscribe(data => {
       console.log(data);
       this.collectionSize = data.length;
       this.filteredOrders = data;
@@ -57,7 +57,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   filterOrder($event) {
-    this.orders = this._orderFilter.transform(this.filteredOrders, this.searchItem);
+    this.orders = this.orderFilter.transform(this.filteredOrders, this.searchItem);
     this.collectionSize = this.orders.length
   }
 
@@ -79,20 +79,20 @@ export class OrderDetailsComponent implements OnInit {
   exportToExcel() {
     let fileName = 'orders.csv';
     let columnNames = ["Id", "Customer Name", "Shipper", "order Date", "Order Total"];
-    this._excelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
+    this._ExcelService.exportToExcel(fileName, columnNames, this.orders.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
   }
 
   sort(key) {
 
     if (this.order == 'decending' && this.arrow[key] == 'down') {
-      this._orderService.sortBy(key).subscribe(data => {
+      this._OrderService.sortBy(key).subscribe(data => {
         this.orders = data
       })
       this.order = "ascending";
       this.arrow[key] = 'up';
     }
     else {
-      this._orderService.sortBy(key).subscribe(data => {
+      this._OrderService.sortBy(key).subscribe(data => {
         this.orders = data.reverse()
       })
       this.order = 'decending';

@@ -22,10 +22,10 @@ export class AdvanceSearchComponent implements OnInit {
   selectedShipper: [];
   selectedFields: IadvanceSearch;
 
-  constructor(private _orderService: OrderService,
+  constructor(private _OrderService: OrderService,
     private fb: FormBuilder,
     private activeModal: NgbActiveModal,
-    private _searchFilter: AdvanceSearchPipe) { }
+    private searchFilter: AdvanceSearchPipe) { }
 
   advanceSearchForm = this.fb.group({
     selectedShippers: [, [Validators.required]],
@@ -37,12 +37,12 @@ export class AdvanceSearchComponent implements OnInit {
   })
 
   ngOnInit() {
-    this._orderService.getOrdersData().subscribe(data => {
+    this._OrderService.getOrdersData().subscribe(data => {
       this.orders = data;
 
       this.filteredOrders = data;
-      this.customerName = this._orderService.getCustomerNameOrShipper(data.map(data => data['customerName']));
-      this.shipper = this._orderService.getCustomerNameOrShipper(data.map(data => data['shipper']));
+      this.customerName = this._OrderService.getCustomerNameOrShipper(data.map(data => data['customerName']));
+      this.shipper = this._OrderService.getCustomerNameOrShipper(data.map(data => data['shipper']));
     })
   }
 
@@ -55,8 +55,8 @@ export class AdvanceSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    this.orders = this._searchFilter.transform(this.filteredOrders, this.advanceSearchForm.value);
-    this._orderService.filterdData(this.orders);
+    this.orders = this.searchFilter.transform(this.filteredOrders, this.advanceSearchForm.value);
+    this._OrderService.filterdData(this.orders);
     this.activeModal.close();
   }
 

@@ -1,4 +1,31 @@
-.my-card{
+.body{
+    .row1{
+        padding-top: 20px;
+    }
+    .my-card{
     border-radius: 12px; 
     box-shadow: 0 6px 10px -4px black;
+    .blue{
+        color: blue;
+    }
+    .grey{
+        color: gray;
+    }
+    .green{
+        color: green;
+    }
+    .align{
+        float: right;
+        .category{
+            text-align: right;
+        }
+        .title{
+            font-size: 2em;
+            text-align: right;
+        }
+    }
+    .sub{
+        padding-right: 20px;
+    }
+}
 }

@@ -21,7 +21,7 @@ export class AddEditProductComponent implements OnInit {
   showDiscount: boolean = true;
   id: number;
 
-  constructor(private _productService: ProductService,
+  constructor(private _ProductService: ProductService,
     private fb: FormBuilder,
     private angularFireDatabase: AngularFireDatabase,
     private activeModal: NgbActiveModal
@@ -59,10 +59,10 @@ export class AddEditProductComponent implements OnInit {
   }
 
   getProducts() {
-    this._productService.getAllData().subscribe(data => {
+    this._ProductService.getAllData().subscribe(data => {
       this.productLength = data.length
-      this.suppliers = this._productService.getSuppliersOrCategories(data.map(data => data['supplier']));
-      this.categories = this._productService.getSuppliersOrCategories(data.map(data => data['category']))
+      this.suppliers = this._ProductService.getSuppliersOrCategories(data.map(data => data['supplier']));
+      this.categories = this._ProductService.getSuppliersOrCategories(data.map(data => data['category']))
     })
   }
 
@@ -96,7 +96,7 @@ export class AddEditProductComponent implements OnInit {
         discount: this.productForm.controls['discount'].value,
         discounted: this.productForm.controls['discounted'].value,
       }
-      this._productService.updateProduct(data);
+      this._ProductService.updateProduct(data);
       this.activeModal.close();
     }
     else {
@@ -112,7 +112,7 @@ export class AddEditProductComponent implements OnInit {
           discount: this.productForm.controls['discount'].value,
         }
 
-        this._productService.addProduct(this.data);
+        this._ProductService.addProduct(this.data);
         sub.unsubscribe();
         this.activeModal.close();
       })

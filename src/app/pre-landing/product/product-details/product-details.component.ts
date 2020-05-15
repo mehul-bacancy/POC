@@ -39,8 +39,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   constructor(
-    public productService: ProductService,
-    private excelService: ExcelService,
+    public _ProductService: ProductService,
+    private _ExcelService: ExcelService,
     public searchProductFilter: SearchProductPipe,
     private router: Router,
     private angularFireDatabase: AngularFireDatabase,
@@ -49,14 +49,14 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    this.productService.getAllData().subscribe(data => {
-      this.suppliers = this.productService.getSuppliersOrCategories(data.map(data => data['supplier']));
-      this.categories = this.productService.getSuppliersOrCategories(data.map(data => data['category']))
+    this._ProductService.getAllData().subscribe(data => {
+      this.suppliers = this._ProductService.getSuppliersOrCategories(data.map(data => data['supplier']));
+      this.categories = this._ProductService.getSuppliersOrCategories(data.map(data => data['category']))
     })
   }
 
   getProducts() {
-    this.productService.getAllData().subscribe(data => {
+    this._ProductService.getAllData().subscribe(data => {
       this.products = data
       this.filteredProducts = data;
       this.collectionSize = this.products.length;
@@ -96,25 +96,25 @@ export class ProductDetailsComponent implements OnInit {
   exportToExcel() {
     let fileName = 'products.csv';
     let columnNames = ["Id", "Name", "Supplier", "Category", "Price", "Discounted", "Discount"];
-    this.excelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
+    this._ExcelService.exportToExcel(fileName, columnNames, this.products.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize))
   }
 
   chnageDiscount(event, obj) {
-    this.productService.updateProduct(obj);
+    this._ProductService.updateProduct(obj);
   }
 
   sort(key) {
     console.log(key)
 
     if (this.order == 'decending' && this.arrow[key] == 'down') {
-      this.productService.sortBy(key).subscribe(data => {
+      this._ProductService.sortBy(key).subscribe(data => {
         this.products = data
       })
       this.order = "ascending";
       this.arrow[key] = 'up';
     }
     else {
-      this.productService.sortBy(key).subscribe(data => {
+      this._ProductService.sortBy(key).subscribe(data => {
         this.products = data.reverse()
       })
       this.order = 'decending';
