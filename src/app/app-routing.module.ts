@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProtectGuard } from './guards/protect.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   { 
     path:'auth',
-    loadChildren:()=>import('./authentication/authentication.module').then(auth=>auth.AuthenticationModule)
+    loadChildren:()=>import('./authentication/authentication.module').then(auth=>auth.AuthenticationModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'pre-landing',
